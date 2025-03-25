@@ -1,0 +1,1246 @@
+Delivered-To: satish.sp0123@gmail.com
+Received: by 2002:a05:6e04:1308:b0:34a:b552:3771 with SMTP id bb8csp851194imb;
+        Fri, 21 Mar 2025 21:30:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHHxYFNLqYgmp/IfW0WRb+M6OQOEfiRVyitGt3I2EefL8BHQmhPlBljzT2hK7PElIECo2eP
+X-Received: by 2002:a05:6a21:789b:b0:1f5:8153:93fb with SMTP id adf61e73a8af0-1fe42f6e9ddmr9296324637.10.1742617799930;
+        Fri, 21 Mar 2025 21:29:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742617799; cv=none;
+        d=google.com; s=arc-20240605;
+        b=NTI1xk+npW2bgwIhKs6DjG8hTncwldttLRZfgvXeH4MpZQw2ZDn+jmg7YNstIGIREd
+         QB+Vlb24GUaKUGF2UmoRsQo0MC75tgOOHsLwGVagO2swBXIlEvfYVNY1dcO4q0Ff3iVy
+         0bQ128GIg3Pc4CiBQFsKs1VKJu6IsI4+Xp9dRCXgUWmOwIYHU8sEKm9/tor6gkjcJQQX
+         GF6RDIVxti2JBRUhGNaXJafFnZTrcugKR1t4yIrZBi/pJimXd/7CovOjUPQraRUmbKR7
+         UpbqXZadbCCXH7a+X2E2YL5ADhQxyBI1wYlVKUJLOJYsbgYPuCVH19w5DYK17fPu/FSy
+         pgpg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=message-id:reply-to:subject:to:from:date:mime-version
+         :dkim-signature;
+        bh=TSLLJ45rPfeys0ZsVO1WSzrnhUGx6/n0V+8NlOVrvGM=;
+        fh=iPlemiBlBGQ6de5byvVwvEiQUsjECfvhP1oCDw5T888=;
+        b=CCZKtBpRA5T9d0onrNVID2eO2qyjZ0NrpFRRaO46WhedY+bfhXV3DSHRiROOASZoeT
+         BuUFREA4D5ZS/f9Vt6phyRebOFAhRnqvkd78Jh6aw+ra0HlhGxkLoxxobQZkSWuZ9RG9
+         t1ZPq0aKue7LOPvq2biqy2ullLInbSLuLYOKkWQdz+sY7pO6XRBR5bAlRqS5/+963S8+
+         KobLvmg5dW7L7maIaBENSXtlBLgDf056ApiSdA7Tshrq0aIQKo9QcJF4dT/z9NPYNZt3
+         UjwGsbbEc5ymUJynDotIyYOH2n0G6xdwwMc6Wjd+eUWKYWTtxNh7/WjtixEmaVmCZPyO
+         SucA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@uci.nse.co.in header.s=mtauci header.b=OHwC2zWS;
+       spf=pass (google.com: domain of nse-direct@uci.nse.co.in designates 116.50.98.31 as permitted sender) smtp.mailfrom=nse-direct@uci.nse.co.in;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nse.co.in
+Return-Path: <nse-direct@uci.nse.co.in>
+Received: from cmpgn-mta31.jio.ril.com (cmpgn-mta31.jio.ril.com. [116.50.98.31])
+        by mx.google.com with UTF8SMTPS id 41be03b00d2f7-af8a2a95527si5500161a12.399.2025.03.21.21.29.59
+        for <satish.sp0123@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Mar 2025 21:29:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nse-direct@uci.nse.co.in designates 116.50.98.31 as permitted sender) client-ip=116.50.98.31;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@uci.nse.co.in header.s=mtauci header.b=OHwC2zWS;
+       spf=pass (google.com: domain of nse-direct@uci.nse.co.in designates 116.50.98.31 as permitted sender) smtp.mailfrom=nse-direct@uci.nse.co.in;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nse.co.in
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uci.nse.co.in;
+ i=@uci.nse.co.in; q=dns/txt; s=mtauci; t=1742617798; h=mime-version :
+ date : from : to : subject : reply-to : message-id : content-type :
+ from; bh=TSLLJ45rPfeys0ZsVO1WSzrnhUGx6/n0V+8NlOVrvGM=;
+ b=OHwC2zWSUEsFLEVUF1YLZt3cZIt/tvsr6abb+0Px9QN0nNehyyXKTs0ft6t8fDIUcLorb
+ KGdTu1oycG5DFRhYh+UtPeGY7o3lfIaHo3N/KF28EGHbs02BriL0kmDGGp/eWZ/IU1gblOC
+ gssJeiSHZokU6GscLy4prB4W78uRZTQ=
+Received: from localhost (unknown [10.177.102.174])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by cmpgn-mta31.jio.ril.com (Postfix) with UTF8SMTPSA id 17B326D11756
+	for <satish.sp0123@gmail.com>; Sat, 22 Mar 2025 09:59:58 +0530 (IST)
+Mime-Version: 1.0
+Date: Sat, 22 Mar 2025 09:59:58 +0530
+From:  "nse-direct" <nse-direct@nse.co.in>
+To: satish.sp0123@gmail.com
+Subject: Trades executed at NSE
+Reply-To: nse-direct@uci.nse.co.in
+Message-ID: <nseil/0195bb4e-26b2-7714-bd66-2eaad4bc0f3c/transactional/swift/nse-direct@uci.nse.co.in>
+Content-Type: multipart/mixed;
+ boundary=f4a03d3bb4db047a5825f81f7bc9f370fa0b91148112631a4c6ddcf34f94
+
+--f4a03d3bb4db047a5825f81f7bc9f370fa0b91148112631a4c6ddcf34f94
+Content-Type: multipart/alternative;
+ boundary=1d87dddc4d0bf47c01a72eb74130a1eaf4b45958fdce6838c54718d0f6cc
+
+--1d87dddc4d0bf47c01a72eb74130a1eaf4b45958fdce6838c54718d0f6cc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+<div style=3D"text-align:left">   =20
+  <p>Dear Investor,</p>
+</div>
+=20
+<p>With reference to SEBI circular ref no. CIR/MIRSD/15/2011dated August 02=
+, 2011, a SMS and email facility has been provided for ease and convenience=
+ of verification of trades.</p>
+Information pertaining to your transactions (Traded value is quantity trade=
+d multiplied by trade price) for   {{monthyear}}   is attached below. Pleas=
+e follow the procedure given below for opening the attachment: <br />  <br =
+/>
+<div>
+1. Click on the attachment provided with this mail<br />
+2. You will be prompted for your password.   <br />  =20
+3. The password is your PAN number in upper case.<br />
+4. Please check the first 3 letters of PAN provided in the mail attachment,=
+ to avoid mistakes   </div><br />
+  =20
+<div>The data is being provided to the clients on an "as is" and "where-is"=
+ basis, without any warranty. The Exchange shall not be liable for any dela=
+y or any other interruption which may occur in providing the data due to an=
+y reason including network (Internet) reasons or snags in the system, break=
+ down of the system or any other equipment, server breakdown, maintenance s=
+hutdown, breakdown of communication services or inability of the Exchange t=
+o send the data. In no event shall the Exchange be liable for any damages, =
+including without limitation direct or indirect, special, incidental, or co=
+nsequential damages, losses or expenses arising in connection with the data=
+ provided by the Exchange through this facility.</div>
+ =20
+<br />
+
+<p class=3D"MsoNormal"><b><u><span lang=3D"EN-US" style=3D"font-size:12.0pt=
+;line-height:107%;mso-ansi-language:EN-US">For Information & Education Purp=
+ose</span></u></b></p>
+
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-=
+height:107%;mso-ansi-language:EN-US">We would like to draw your attention t=
+o "SEBI vide
+circular dated April 04, 2022, wherein they have introduced the mechanism o=
+f =E2=80=9C<span class=3D"SpellE">Demat</span> Debit and Pledge Instruction=
+ (DDPI)=E2=80=9D. The DDPI shall
+serve the same purpose of POA and significantly mitigate the misuse of POA.=
+</span></p>
+
+<p class=3D"MsoNormal" style=3D"text-align:justify"><span lang=3D"EN-US" st=
+yle=3D"font-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">You shoul=
+d be
+aware that the stockbroker and depository participant cannot directly /
+indirectly compel the clients to execute the DDPI or deny services to the
+client if the client refuses to execute the DDPI.</span></p>
+
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-=
+height:107%;mso-ansi-language:EN-US">Please refer to SEBI Circular dated Oc=
+tober 06, 2022,
+for the list of instructions which client can give to its stockbroker /
+depository participant. You may refer the following link for same:</span></=
+p>
+
+<p class=3D"MsoNormal"><a href=3D"https://www.sebi.gov.in/legal/circulars/o=
+ct-2022/execution-of-demat-debit-and-pledge-instruction-ddpi-for-transfer-o=
+f-securities-towards-deliveries-settlement-obligations-and-pledging-re-pled=
+ging-of-securities-clarification_63724.html"><span lang=3D"EN-US" style=3D"=
+font-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">https://www.sebi=
+.gov.in/legal/circulars/oct-2022/execution-of-demat-debit-and-pledge-instru=
+ction-ddpi-for-transfer-of-securities-towards-deliveries-settlement-obligat=
+ions-and-pledging-re-pledging-of-securities-clarification_63724.html</span>=
+</a><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;mso-ans=
+i-language:EN-US"></span></p>
+
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-=
+height:107%;mso-ansi-language:EN-US">Should you wish to give any instructio=
+ns, these need
+to be signed in physical against each purpose of DDPI. In case of an <span =
+class=3D"SpellE">eSign</span> option is made available, client should be gi=
+ven an
+option to choose the specific purpose(s) of DDPI".</span></p>
+<div>  <b>  Dos and Don=E2=80=99ts for Retail Investors:   </b> </div>
+
+<br />
+  =20
+<div> =20
+ =20
+<ol>
+<li>Please deal with SEBI registered intermediaries only.  Ensure that you =
+have complete knowledge of the products and the risks involved before inves=
+ting.</li>
+<li>Offering fixed/guaranteed/regular returns/ capital protection schemes i=
+n stock markets whether written or oral is not allowed. Brokers or any of t=
+heir representatives or Authorised Persons cannot enter into any loan agree=
+ment to pay interest on the funds/securities offered by you.</li>
+<li>Do not fall prey to emails, SMSs and online videos luring you to trade =
+in stock/ securities / schemes promising high returns/profits.</li>
+<li>Ensure to fill all the required details in the 'KYC' document by yourse=
+lf and receive duly signed copy of your 'KYC' documents from your broker.</=
+li>
+<li>Trading in derivatives involves high risk and accordingly investors sho=
+uld understand the product well before trading in such segments/products.</=
+li>
+<li>Opt for electronic (e-mail) contract notes/financial statements only if=
+ you are computer savvy and have your own e-mail account.</li>
+<li>Do not share your login ID, password, OTP, TPIN with any person includi=
+ng employees of the broker or Authorised Person under any circumstances.</l=
+i>
+<li>Ensure that all your trades are executed as per your instructions.</li>
+<li>Insure you receive the payout of funds and securities within 1 working =
+day of settlement. In case you have chosen running account of funds, ensure=
+ your account is settled on first Friday of every month / quarter as opted =
+for.</li>
+<li>Dealing in cash is prohibited. Do not place any securities with the bro=
+ker or associate of the broker or authorized person of the broker. Do not t=
+ransfer securities as margin/ collateral to the broker and such securities =
+only must be pledged from the client demat account.</li>
+<li>Opt for Demat Debit and Pledge Instruction (DDPI) only for transfer of =
+securities for deliveries/settlement obligations, initiating pledging of se=
+curities for margins, and for mutual fund/open offer transactions on Exchan=
+ge platform. DDPI/PoA are optional and should not be insisted on for openin=
+g the account.</li>
+<li>Always keep your mobile number and email id updated with your broker. D=
+on't ignore any SMSs / e-mails with regards to contract notes/trades/funds =
+and securities balances sent by broker/Exchange. Verify the details of the =
+same and report discrepancy, if any, to your broker in writing immediately.=
+</li>
+<li>Please verify the bank account details of the broker from the website o=
+f broker/Exchange before transferring funds to the broker.</li>
+<li>Claims for funds or securities given to the broker under any arrangemen=
+t/ agreement of indicative return or claims for funds, without transactions=
+ on the Exchange will not be accepted by the Exchange in case of default by=
+ your broker.</li>
+<li>For more details on Investor awareness, please visit-<a href=3D"https:/=
+/www.nseindia.com/invest/investors-home"><span lang=3D"EN-US" style=3D"font=
+-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">www.nseindia.com/inv=
+est/investors-home</span></a></li>
+<li>For more information related to investments in securities market, pleas=
+e visit SEBI Investor Website <a href=3D"https://investor.sebi.gov.in/"><sp=
+an style=3D"font-size: 12.0pt; line-height: 107%; mso-ansi-language: EN-US;=
+">https://investor.sebi.gov.in/</span></a> and SEBI Saa=E2=82=B9thi Mobile =
+App.</li>
+<li>SEBI has launched a free, voluntary online "Investor Certification Exam=
+ination" aimed at enhancing investors' knowledge about Securities Market. T=
+o register and get your certificate - click on the link - <a href=3D"https:=
+//sice.nism.ac.in/"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-hei=
+ght:107%;mso-ansi-language:EN-US">https://sice.nism.ac.in/</span></a></li>
+</ol>
+</div>
+=20
+<p lang=3D"hi">
+</p><div> <b>  =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95 =E0=
+=A4=95=E0=A5=8D=E0=A4=AF=E0=A4=BE =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=
+=A4=94=E0=A4=B0 =E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A4=BE =E0=A4=A8 =E0=A4=95=E0=
+=A4=B0=E0=A5=87=E0=A4=82: </b> </div>
+=20
+	<div>
+		<ol>
+			<li>=E0=A4=95=E0=A5=83=E0=A4=AA=E0=A4=AF=E0=A4=BE =E0=A4=B8=E0=A4=BF=E0=
+=A4=B0=E0=A5=8D=E0=A4=AB =E0=A4=B8=E0=A5=87=E0=A4=AC=E0=A5=80 =E0=A4=95=E0=
+=A5=87 =E0=A4=AF=E0=A4=B9=E0=A4=BE=E0=A4=82 =E0=A4=B0=E0=A4=9C=E0=A4=BF=E0=
+=A4=B8=E0=A5=8D=E0=A4=9F=E0=A4=B0=E0=A5=8D=E0=A4=A1 =E0=A4=87=E0=A4=82=E0=
+=A4=9F=E0=A4=B0=E0=A4=AE=E0=A5=80=E0=A4=A1=E0=A4=AF=E0=A4=B0=E0=A5=80=E0=A4=
+=9C=E0=A4=BC =E0=A4=95=E0=A5=87 =E0=A4=B8=E0=A4=BE=E0=A4=A5 =E0=A4=B9=E0=A5=
+=80 =E0=A4=A1=E0=A5=80=E0=A4=B2 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=
+=A4 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6 =E0=A4=95=E0=A4=B0=E0=A4=
+=A8=E0=A5=87 =E0=A4=B8=E0=A5=87 =E0=A4=AA=E0=A4=B9=E0=A4=B2=E0=A5=87 =E0=A4=
+=A4=E0=A4=AF =E0=A4=95=E0=A4=B0 =E0=A4=B2=E0=A5=87=E0=A4=82 =E0=A4=95=E0=A4=
+=BF =E0=A4=86=E0=A4=AA =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=A1=E0=A4=
+=95=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B8 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=
+=B8=E0=A4=AE=E0=A5=8D=E0=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=A4=
+=9C=E0=A5=8B=E0=A4=96=E0=A4=BF=E0=A4=AE =E0=A4=95=E0=A5=87 =E0=A4=AC=E0=A4=
+=BE=E0=A4=B0=E0=A5=87 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=AA=E0=A5=82=E0=A4=
+=B0=E0=A5=80 =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A4=95=E0=A4=BE=E0=A4=B0=E0=A5=
+=80 =E0=A4=B0=E0=A4=96=E0=A4=A4=E0=A5=87 =E0=A4=B9=E0=A5=88=E0=A4=82=E0=A5=
+=A4 </li>
+			<li>=E0=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=89=E0=A4=95 =E0=A4=AE=E0=A4=BE=E0=
+=A4=B0=E0=A5=8D=E0=A4=95=E0=A5=87=E0=A4=9F =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=
+=A4=B2=E0=A4=BF=E0=A4=96=E0=A4=BF=E0=A4=A4 =E0=A4=AF=E0=A4=BE =E0=A4=AE=E0=
+=A5=8C=E0=A4=96=E0=A4=BF=E0=A4=95 =E0=A4=B0=E0=A5=82=E0=A4=AA =E0=A4=B8=E0=
+=A5=87 =E0=A4=AB=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A5=8D=E0=A4=A1/ =E0=
+=A4=97=E0=A4=BE=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A4=9F=E0=A5=87=E0=A4=A1/=E0=
+=A4=B0=E0=A5=87=E0=A4=97=E0=A5=8D=E0=A4=AF=E0=A5=81=E0=A4=B2=E0=A4=B0 =E0=
+=A4=B0=E0=A4=BF=E0=A4=9F=E0=A4=B0=E0=A5=8D=E0=A4=A8=E0=A5=8D=E0=A4=B8/=E0=
+=A4=95=E0=A5=88=E0=A4=AA=E0=A4=BF=E0=A4=9F=E0=A4=B2 =E0=A4=AA=E0=A5=8D=E0=
+=A4=B0=E0=A5=8B=E0=A4=9F=E0=A5=87=E0=A4=95=E0=A5=8D=E0=A4=B6=E0=A4=A8 =E0=
+=A4=B8=E0=A5=8D=E0=A4=95=E0=A5=80=E0=A4=AE=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=
+=A5=80 =E0=A4=91=E0=A4=AB=E0=A4=B0 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=
+=A4=95=E0=A5=80 =E0=A4=85=E0=A4=A8=E0=A5=81=E0=A4=AE=E0=A4=A4=E0=A4=BF =E0=
+=A4=A8=E0=A4=B9=E0=A5=80=E0=A4=82 =E0=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=AC=E0=
+=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0=E0=A5=8D=E0=A4=B8 =E0=A4=AF=E0=
+=A4=BE =E0=A4=89=E0=A4=A8=E0=A4=95=E0=A5=87 =E0=A4=95=E0=A4=BF=E0=A4=B8=E0=
+=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF=E0=
+=A4=A8=E0=A4=BF=E0=A4=A7=E0=A4=BF =E0=A4=AF=E0=A4=BE =E0=A4=AA=E0=A5=8D=E0=
+=A4=B0=E0=A4=BE=E0=A4=A7=E0=A4=BF=E0=A4=95=E0=A5=83=E0=A4=A4 =E0=A4=B5=E0=
+=A5=8D=E0=A4=AF=E0=A4=95=E0=A5=8D=E0=A4=A4=E0=A4=BF=E0=A4=AF=E0=A5=8B=E0=A4=
+=82 =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=BE =E0=A4=86=E0=A4=
+=AA=E0=A4=95=E0=A5=87 =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=
+=BE =E0=A4=91=E0=A4=AB=E0=A4=B0 =E0=A4=95=E0=A4=BF=E0=A4=8F =E0=A4=9C=E0=A4=
+=BE=E0=A4=A8=E0=A5=87 =E0=A4=B5=E0=A4=BE=E0=A4=B2=E0=A5=87 =E0=A4=AB=E0=A4=
+=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 /=E0=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=
+=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=
+=AA=E0=A4=B0 =E0=A4=AC=E0=A5=8D=E0=A4=AF=E0=A4=BE=E0=A4=9C =E0=A4=95=E0=A5=
+=87 =E0=A4=AD=E0=A5=81=E0=A4=97=E0=A4=A4=E0=A4=BE=E0=A4=A8 =E0=A4=95=E0=A5=
+=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B2=E0=A5=8B=E0=A4=A8 =E0=A4=B8=E0=A4=
+=AE=E0=A4=9D=E0=A5=8C=E0=A4=A4=E0=A4=BE =E0=A4=A8=E0=A4=B9=E0=A5=80=E0=A4=
+=82 =E0=A4=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE =E0=A4=B8=E0=A4=
+=95=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=A5=88=E0=A5=A4</li>
+			<li>=E0=A4=B9=E0=A4=BE=E0=A4=88 =E0=A4=B0=E0=A4=BF=E0=A4=9F=E0=A4=B0=E0=
+=A5=8D=E0=A4=A8/=E0=A4=B2=E0=A4=BE=E0=A4=AD =E0=A4=95=E0=A4=BE =E0=A4=B5=E0=
+=A4=BE=E0=A4=A6=E0=A4=BE =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=B5=E0=
+=A4=BE=E0=A4=B2=E0=A5=87 =E0=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=89=E0=A4=95/=E0=
+=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=
+=9F=E0=A5=80=E0=A4=9C=E0=A4=BC/=E0=A4=B8=E0=A5=8D=E0=A4=95=E0=A5=80=E0=A4=
+=AE=E0=A5=8B=E0=A4=82 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=9F=E0=A5=8D=E0=A4=
+=B0=E0=A5=87=E0=A4=A1 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A4=
+=BE =E0=A4=B2=E0=A4=BE=E0=A4=B2=E0=A4=9A =E0=A4=A6=E0=A5=87=E0=A4=A8=E0=A5=
+=87 =E0=A4=B5=E0=A4=BE=E0=A4=B2=E0=A5=80 =E0=A4=88=E0=A4=AE=E0=A5=87=E0=A4=
+=B2, =E0=A4=8F=E0=A4=B8=E0=A4=8F=E0=A4=AE=E0=A4=8F=E0=A4=B8 =E0=A4=A4=E0=A4=
+=A5=E0=A4=BE =E0=A4=91=E0=A4=A8=E0=A4=B2=E0=A4=BE=E0=A4=87=E0=A4=A8 =E0=A4=
+=B5=E0=A5=80=E0=A4=A1=E0=A4=BF=E0=A4=AF=E0=A5=8B =E0=A4=AA=E0=A4=B0 =E0=A4=
+=AD=E0=A4=B0=E0=A5=8B=E0=A4=B8=E0=A4=BE =E0=A4=A8 =E0=A4=95=E0=A4=B0=E0=A5=
+=87=E0=A4=82=E0=A5=A4</li>
+			<li>=E2=80=98=E0=A4=95=E0=A5=87=E0=A4=B5=E0=A4=BE=E0=A4=88=E0=A4=B8=E0=
+=A5=80=E2=80=99 =E0=A4=A6=E0=A4=B8=E0=A5=8D=E0=A4=A4=E0=A4=BE=E0=A4=B5=E0=
+=A5=87=E0=A4=9C=E0=A4=BC =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=B8=E0=A4=AD=E0=
+=A5=80 =E0=A4=86=E0=A4=B5=E0=A4=B6=E0=A5=8D=E0=A4=AF=E0=A4=95 =E0=A4=AC=E0=
+=A5=8D=E0=A4=AF=E0=A5=8C=E0=A4=B0=E0=A4=BE =E0=A4=B8=E0=A5=8D=E0=A4=B5=E0=
+=A4=AF=E0=A4=82 =E0=A4=B9=E0=A5=80 =E0=A4=AD=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=
+=A4=94=E0=A4=B0 =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AC=E0=A5=8D=E0=
+=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=B8=E0=A5=87 =E0=A4=85=E0=A4=AA=E0=
+=A4=A8=E0=A5=87 =E2=80=98=E0=A4=95=E0=A5=87=E0=A4=B5=E0=A4=BE=E0=A4=88=E0=
+=A4=B8=E0=A5=80=E2=80=99 =E0=A4=A6=E0=A4=B8=E0=A5=8D=E0=A4=A4=E0=A4=BE=E0=
+=A4=B5=E0=A5=87=E0=A4=9C=E0=A4=BC=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=80 =E0=
+=A4=B5=E0=A4=BF=E0=A4=A7=E0=A4=BF=E0=A4=B5=E0=A4=A4 =E0=A4=B0=E0=A5=82=E0=
+=A4=AA =E0=A4=B8=E0=A5=87 =E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=A8 =E0=A4=95=E0=
+=A5=80 =E0=A4=97=E0=A4=88 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF =E0=
+=A4=95=E0=A5=8B =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=AA=E0=A5=8D=E0=
+=A4=A4 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=A4</li>
+			<li>=E0=A4=A1=E0=A5=87=E0=A4=B0=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=9F=E0=
+=A4=BF=E0=A4=B5 =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A4=BF=E0=
+=A4=82=E0=A4=97 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=9C=E0=A5=8B=E0=A4=96=E0=
+=A4=BF=E0=A4=AE =E0=A4=B9=E0=A5=8B =E0=A4=B8=E0=A4=95=E0=A4=A4=E0=A5=87 =E0=
+=A4=B9=E0=A5=88=E0=A4=82 =E0=A4=94=E0=A4=B0 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=
+=A5=87=E0=A4=B6=E0=A4=95=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=8B =E0=A4=95=E0=
+=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=A4=AE=E0=A5=8D=E0=
+=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=A4=89=E0=A4=A4=E0=A5=8D=E0=
+=A4=AA=E0=A4=BE=E0=A4=A6 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=9F=E0=A5=8D=E0=
+=A4=B0=E0=A5=87=E0=A4=A1 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=B8=E0=
+=A5=87 =E0=A4=AA=E0=A5=82=E0=A4=B0=E0=A5=8D=E0=A4=B5 =E0=A4=89=E0=A4=B8=E0=
+=A4=95=E0=A4=BE =E0=A4=AA=E0=A5=82=E0=A4=B0=E0=A5=8D=E0=A4=A3 =E0=A4=9C=E0=
+=A5=8D=E0=A4=9E=E0=A4=BE=E0=A4=A8 =E0=A4=94=E0=A4=B0 =E0=A4=9C=E0=A4=BE=E0=
+=A4=A8=E0=A4=95=E0=A4=BE=E0=A4=B0=E0=A5=80 =E0=A4=B2=E0=A5=87=E0=A4=A8=E0=
+=A4=BE =E0=A4=86=E0=A4=B5=E0=A4=B6=E0=A5=8D=E0=A4=AF=E0=A4=95 =E0=A4=B9=E0=
+=A5=88=E0=A5=A4</li>
+			<li>=E0=A4=AF=E0=A4=A6=E0=A4=BF =E0=A4=86=E0=A4=AA =E0=A4=95=E0=A4=AE=E0=
+=A5=8D=E0=A4=AA=E0=A5=8D=E0=A4=AF=E0=A5=82=E0=A4=9F=E0=A4=B0 =E0=A4=B8=E0=
+=A5=87 =E0=A4=AC=E0=A4=B9=E0=A5=81=E0=A4=A4 =E0=A4=AD=E0=A4=B2=E0=A5=80-=E0=
+=A4=AD=E0=A4=BE=E0=A4=82=E0=A4=A4=E0=A4=BF =E0=A4=AA=E0=A4=B0=E0=A4=BF=E0=
+=A4=9A=E0=A4=BF=E0=A4=A4 =E0=A4=B9=E0=A5=88=E0=A4=82 =E0=A4=A4=E0=A4=A5=E0=
+=A4=BE =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A4=BE =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=
+=A4=BE =E0=A4=88-=E0=A4=AE=E0=A5=87=E0=A4=B2 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=
+=A4=89=E0=A4=82=E0=A4=9F =E0=A4=B9=E0=A5=88, =E0=A4=95=E0=A5=87=E0=A4=B5=E0=
+=A4=B2 =E0=A4=A4=E0=A4=AD=E0=A5=80 =E0=A4=B9=E0=A5=80 =E0=A4=87=E0=A4=B2=E0=
+=A5=87=E0=A4=95=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=A8=E0=A4=
+=BF=E0=A4=95 (=E0=A4=88-=E0=A4=AE=E0=A5=87=E0=A4=B2) =E0=A4=95=E0=A5=89=E0=
+=A4=A8=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=95=E0=A5=8D=E0=A4=
+=9F =E0=A4=A8=E0=A5=8B=E0=A4=9F=E0=A5=8D=E0=A4=B8 / =E0=A4=AB=E0=A4=BE=E0=
+=A4=88=E0=A4=A8=E0=A5=87=E0=A4=82=E0=A4=B6=E0=A4=BF=E0=A4=AF=E0=A4=B2 =E0=
+=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=87=E0=A4=9F=E0=A4=AE=E0=A5=87=E0=A4=82=E0=A4=
+=9F=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=A4=BE =E0=A4=B5=E0=A4=BF=E0=A4=95=E0=A4=
+=B2=E0=A5=8D=E0=A4=AA =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=A5=87=E0=A4=82=E0=A5=
+=A4</li>
+			<li>=E0=A4=95=E0=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=
+=A5=8D=E0=A4=A5=E0=A4=BF=E0=A4=A4=E0=A4=BF =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=
+=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=
+=A4=95=E0=A4=B0=E0=A5=8D=E0=A4=AE=E0=A4=9A=E0=A4=BE=E0=A4=B0=E0=A5=80 =E0=
+=A4=AF=E0=A4=BE =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=A7=E0=A4=BF=E0=
+=A4=95=E0=A5=83=E0=A4=A4 =E0=A4=B5=E0=A5=8D=E0=A4=AF=E0=A4=95=E0=A5=8D=E0=
+=A4=A4=E0=A4=BF =E0=A4=B8=E0=A4=B9=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=BF=E0=
+=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B5=E0=A5=8D=E0=A4=AF=E0=A4=95=E0=
+=A5=8D=E0=A4=A4=E0=A4=BF =E0=A4=95=E0=A5=87 =E0=A4=B8=E0=A4=BE=E0=A4=A5 =E0=
+=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=80 =E0=A4=B2=E0=A5=89=E0=A4=97=E0=A4=BF=E0=
+=A4=A8 =E0=A4=86=E0=A4=88=E0=A4=A1=E0=A5=80, =E0=A4=AA=E0=A4=BE=E0=A4=B8=E0=
+=A4=B5=E0=A4=B0=E0=A5=8D=E0=A4=A1, =E0=A4=93=E0=A4=9F=E0=A5=80=E0=A4=AA=E0=
+=A5=80 =E0=A4=94=E0=A4=B0 =E0=A4=9F=E0=A5=80-=E0=A4=AA=E0=A4=BF=E0=A4=A8 =
+=E0=A4=95=E0=A5=8B =E0=A4=B8=E0=A4=BE=E0=A4=9D=E0=A4=BE =E0=A4=A8 =E0=A4=95=
+=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=A4</li>
+			<li>=E0=A4=A4=E0=A4=AF =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=95=E0=
+=A4=BF =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=87 =E0=A4=B8=E0=A4=AD=E0=A5=80 =E0=
+=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=
+=A5=8B =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=87 =E0=A4=A8=E0=A4=BF=E0=A4=B0=E0=
+=A5=8D=E0=A4=A6=E0=A5=87=E0=A4=B6=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=87 =E0=
+=A4=85=E0=A4=A8=E0=A5=81=E0=A4=B8=E0=A4=BE=E0=A4=B0 =E0=A4=B9=E0=A5=80 =E0=
+=A4=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE=E0=A4=A4=E0=A4=BE =E0=
+=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=8F=E0=A4=A8=E0=A4=8F=E0=A4=B8=E0=A4=88 =E0=
+=A4=B5=E0=A5=87=E0=A4=AC=E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=9F =E0=A4=AA=E0=
+=A4=B0 =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1 =E0=A4=B5=E0=A5=87=E0=
+=A4=B0=E0=A4=BF=E0=A4=AB=E0=A4=BF=E0=A4=95=E0=A5=87=E0=A4=B6=E0=A4=A8 =E0=
+=A4=B8=E0=A5=81=E0=A4=B5=E0=A4=BF=E0=A4=A7=E0=A4=BE =E0=A4=89=E0=A4=AA=E0=
+=A4=B2=E0=A4=AC=E0=A5=8D=E0=A4=A7 =E0=A4=B9=E0=A5=88 =E0=A4=9C=E0=A4=BF=E0=
+=A4=B8=E0=A5=87 =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=80 =E0=A4=A4=E0=A4=B0=E0=
+=A4=AB =E0=A4=B8=E0=A5=87 =E0=A4=95=E0=A4=BF=E0=A4=8F =E0=A4=97=E0=A4=8F =
+=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=95=
+=E0=A5=8B =E0=A4=B5=E0=A5=87=E0=A4=B0=E0=A5=80=E0=A4=AB=E0=A4=BE=E0=A4=88 =
+=E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=
+=E0=A4=8F =E0=A4=87=E0=A4=B8=E0=A5=8D=E0=A4=A4=E0=A5=87=E0=A4=AE=E0=A4=BE=
+=E0=A4=B2 =E0=A4=95=E0=A4=B0 =E0=A4=B8=E0=A4=95=E0=A4=A4=E0=A5=87 =E0=A4=B9=
+=E0=A5=88=E0=A4=82=E0=A5=A4 </li>
+			<li>=E0=A4=B8=E0=A5=81=E0=A4=A8=E0=A4=BF=E0=A4=B6=E0=A5=8D=E0=A4=9A=E0=
+=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=95=E0=A4=BF =E0=
+=A4=B8=E0=A5=87=E0=A4=9F=E0=A4=B2=E0=A4=AE=E0=A5=87=E0=A4=82=E0=A4=9F =E0=
+=A4=95=E0=A5=87 1 =E0=A4=A6=E0=A4=BF=E0=A4=A8 =E0=A4=95=E0=A5=87 =E0=A4=85=
+=E0=A4=82=E0=A4=A6=E0=A4=B0 =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=8B =E0=A4=AB=
+=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=B8=
+=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=
+=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A4=BE =E0=A4=AA=E0=A5=87=E0=A4=86=E0=
+=A4=89=E0=A4=9F =E0=A4=AE=E0=A4=BF=E0=A4=B2 =E0=A4=9C=E0=A4=BE=E0=A4=A4=E0=
+=A4=BE =E0=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=AF=E0=A4=A6=E0=A4=BF =E0=A4=86=E0=
+=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AB=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=
+=A4=95=E0=A5=87 =E0=A4=B0=E0=A4=A8=E0=A4=BF=E0=A4=82=E0=A4=97 =E0=A4=85=E0=
+=A4=95=E0=A4=BE=E0=A4=89=E0=A4=82=E0=A4=9F=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=
+=A5=8B =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=A4=BE =E0=A4=B9=E0=A5=88, =E0=A4=A4=
+=E0=A5=8B =E0=A4=B8=E0=A5=81=E0=A4=A8=E0=A4=BF=E0=A4=B6=E0=A5=8D=E0=A4=9A=
+=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=95=E0=A4=BF =
+=E0=A4=9C=E0=A5=88=E0=A4=B8=E0=A4=BE =E0=A4=B5=E0=A4=BF=E0=A4=95=E0=A4=B2=
+=E0=A5=8D=E0=A4=AA =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=A4=BE =E0=A4=97=E0=A4=AF=
+=E0=A4=BE =E0=A4=B9=E0=A5=88, =E0=A4=89=E0=A4=B8=E0=A5=80 =E0=A4=95=E0=A5=
+=87 =E0=A4=85=E0=A4=A8=E0=A5=81=E0=A4=B8=E0=A4=BE=E0=A4=B0 =E0=A4=86=E0=A4=
+=AA=E0=A4=95=E0=A5=87 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=A4=82=E0=A4=
+=9F =E0=A4=95=E0=A5=8B =E0=A4=B9=E0=A4=B0 =E0=A4=AE=E0=A4=B9=E0=A5=80=E0=A4=
+=A8=E0=A5=87 /=E0=A4=A4=E0=A4=BF=E0=A4=AE=E0=A4=BE=E0=A4=B9=E0=A5=80 =E0=A4=
+=95=E0=A5=87 =E0=A4=AA=E0=A4=B9=E0=A4=B2=E0=A5=87 =E0=A4=B6=E0=A5=81=E0=A4=
+=95=E0=A5=8D=E0=A4=B0=E0=A4=B5=E0=A4=BE=E0=A4=B0 =E0=A4=95=E0=A5=8B =E0=A4=
+=B8=E0=A5=87=E0=A4=9F=E0=A4=B2 =E0=A4=95=E0=A4=B0 =E0=A4=A6=E0=A4=BF=E0=A4=
+=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=A5=88=E0=A5=
+=A4</li>
+			<li>=E0=A4=A8=E0=A4=95=E0=A4=A6 =E0=A4=B8=E0=A5=8C=E0=A4=A6=E0=A5=87=E0=
+=A4=AC=E0=A4=BE=E0=A4=9C=E0=A5=80 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=
+=A4=BF=E0=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=A4=B9=E0=A5=88=E0=
+=A5=A4 =E0=A4=95=E0=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=
+=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=
+=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=8B =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=
+=8B=E0=A4=95=E0=A4=B0 =E0=A4=AF=E0=A4=BE =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=
+=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=8F=E0=A4=B8=E0=A5=8B=E0=A4=
+=B8=E0=A4=BF=E0=A4=8F=E0=A4=9F =E0=A4=AF=E0=A4=BE =E0=A4=AC=E0=A5=8D=E0=A4=
+=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=AA=E0=A5=8D=E0=A4=
+=B0=E0=A4=BE=E0=A4=A7=E0=A4=BF=E0=A4=95=E0=A5=83=E0=A4=A4 =E0=A4=B5=E0=A5=
+=8D=E0=A4=AF=E0=A4=95=E0=A5=8D=E0=A4=A4=E0=A4=BF =E0=A4=95=E0=A5=8B =E0=A4=
+=A8 =E0=A4=A6=E0=A5=87=E0=A4=82=E0=A5=A4 =E0=A4=AE=E0=A4=BE=E0=A4=B0=E0=A5=
+=8D=E0=A4=9C=E0=A4=BF=E0=A4=A8 /=E0=A4=95=E0=A5=8B=E0=A4=B2=E0=A5=87=E0=A4=
+=9F=E0=A5=8D=E0=A4=B0=E0=A4=B2 =E0=A4=95=E0=A5=87 =E0=A4=A4=E0=A5=8C=E0=A4=
+=B0 =E0=A4=AA=E0=A4=B0 =E0=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=
+=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=
+=8B =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=
+=8B =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=82=E0=A4=B8=E0=A4=AB=E0=A4=
+=B0 =E0=A4=A8 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=A4=E0=A4=A5=E0=A4=
+=BE =E0=A4=87=E0=A4=B8 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=95=E0=A4=BE=E0=A4=
+=B0 =E0=A4=95=E0=A5=80 =E0=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=
+=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=
+=8B =E0=A4=95=E0=A5=87=E0=A4=B5=E0=A4=B2 =E0=A4=95=E0=A5=8D=E0=A4=B2=E0=A4=
+=BE=E0=A4=87=E0=A4=82=E0=A4=9F =E0=A4=A1=E0=A4=BF=E0=A4=AE=E0=A5=87=E0=A4=
+=9F =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=A4=82=E0=A4=9F =E0=A4=B8=E0=A5=
+=87 =E0=A4=B9=E0=A5=80 =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=A5=87=E0=A4=9C =E0=A4=
+=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A4=BE =E0=A4=
+=9A=E0=A4=BE=E0=A4=B9=E0=A4=BF=E0=A4=8F=E0=A5=A4</li>
+			<li>=E0=A4=A1=E0=A4=BF=E0=A4=B2=E0=A5=80=E0=A4=B5=E0=A4=B0=E0=A5=80/=E0=
+=A4=B8=E0=A5=87=E0=A4=9F=E0=A4=B2=E0=A4=AE=E0=A5=87=E0=A4=82=E0=A4=9F =E0=
+=A4=AC=E0=A4=BE=E0=A4=A7=E0=A5=8D=E0=A4=AF=E0=A4=A4=E0=A4=BE=E0=A4=93=E0=A4=
+=82 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B8=E0=A4=BF=E0=A4=
+=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=
+=E0=A4=BC =E0=A4=95=E0=A5=87 =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=82=
+=E0=A4=B8=E0=A4=AB=E0=A4=B0, =E0=A4=AE=E0=A4=BE=E0=A4=B0=E0=A5=8D=E0=A4=9C=
+=E0=A4=BF=E0=A4=A8 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B8=
+=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=
+=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=8B =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=
+=A5=87=E0=A4=9C =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=80 =E0=
+=A4=B6=E0=A5=81=E0=A4=B0=E0=A5=81=E0=A4=86=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=
+=A4=A8=E0=A5=87, =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=8F=E0=A4=95=E0=A5=8D=E0=
+=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=A4=9C =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=
+=A5=87=E0=A4=9F=E0=A4=AB=E0=A5=89=E0=A4=B0=E0=A5=8D=E0=A4=AE =E0=A4=AA=E0=
+=A4=B0 =E0=A4=AE=E0=A5=8D=E0=A4=AF=E0=A5=82=E0=A4=9A=E0=A4=B2 =E0=A4=AB=E0=
+=A4=82=E0=A4=A1/=E0=A4=93=E0=A4=AA=E0=A4=A8 =E0=A4=91=E0=A4=AB=E0=A4=B0 =E0=
+=A4=B2=E0=A5=87=E0=A4=A8=E0=A4=A6=E0=A5=87=E0=A4=A8=E0=A5=8B=E0=A4=82 =E0=
+=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B9=E0=A5=80 =E0=A4=A1=E0=
+=A5=80=E0=A4=A1=E0=A5=80=E0=A4=AA=E0=A5=80=E0=A4=86=E0=A4=88 (=E0=A4=A1=E0=
+=A4=BF=E0=A4=AE=E0=A5=87=E0=A4=9F =E0=A4=A1=E0=A5=87=E0=A4=AC=E0=A4=BF=E0=
+=A4=9F =E0=A4=8F=E0=A4=A3=E0=A5=8D=E0=A4=A1 =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=
+=A5=87=E0=A4=9C =E0=A4=87=E0=A4=82=E0=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=
+=A4=B0=E0=A4=95=E0=A5=8D=E0=A4=B6=E0=A4=A8) =E0=A4=95=E0=A4=BE =E0=A4=B5=E0=
+=A4=BF=E0=A4=95=E0=A4=B2=E0=A5=8D=E0=A4=AA =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=
+=A5=87=E0=A4=82=E0=A5=A4 =E0=A4=A1=E0=A5=80=E0=A4=A1=E0=A5=80=E0=A4=AA=E0=
+=A5=80=E0=A4=86=E0=A4=88 /=E0=A4=AA=E0=A5=80=E0=A4=93=E0=A4=8F =E0=A4=B5=E0=
+=A5=88=E0=A4=95=E0=A4=B2=E0=A5=8D=E0=A4=AA=E0=A4=BF=E0=A4=95 =E0=A4=B9=E0=
+=A5=88=E0=A4=82 =E0=A4=94=E0=A4=B0 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=
+=A4=82=E0=A4=9F =E0=A4=96=E0=A5=8B=E0=A4=B2=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=
+=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=89=E0=A4=A8=E0=A4=95=E0=A5=87 =E0=
+=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=9C=E0=A4=AC=E0=A4=B0=E0=A4=A6=E0=A4=B8=E0=
+=A5=8D=E0=A4=A4=E0=A5=80 =E0=A4=A8=E0=A4=B9=E0=A5=80=E0=A4=82 =E0=A4=95=E0=
+=A5=80 =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A5=80 =E0=A4=9A=E0=A4=BE=E0=A4=B9=E0=
+=A4=BF=E0=A4=8F=E0=A5=A4</li>
+			<li>=E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=
+=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=AA=E0=A4=BE=E0=A4=B8 =E0=
+=A4=B9=E0=A4=AE=E0=A5=87=E0=A4=B6=E0=A4=BE =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=
+=A5=87 =E0=A4=AE=E0=A5=8B=E0=A4=AC=E0=A4=BE=E0=A4=87=E0=A4=B2 =E0=A4=A8=E0=
+=A4=AE=E0=A5=8D=E0=A4=AC=E0=A4=B0 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=88=E0=
+=A4=AE=E0=A5=87=E0=A4=B2 =E0=A4=86=E0=A4=88=E0=A4=A1=E0=A5=80 =E0=A4=95=E0=
+=A5=8B =E0=A4=85=E0=A4=AA=E0=A4=A1=E0=A5=87=E0=A4=9F =E0=A4=B0=E0=A4=96=E0=
+=A5=87=E0=A4=82=E0=A5=A4 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=
+=A4=B0/=E0=A4=8F=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=
+=A4=9C =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=BE =E0=A4=95=E0=
+=A5=89=E0=A4=A8=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=95=E0=A5=
+=8D=E0=A4=9F =E0=A4=A8=E0=A5=8B=E0=A4=9F=E0=A5=8D=E0=A4=B8/=E0=A4=9F=E0=A5=
+=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A5=8D=E0=A4=B8/=E0=A4=AB=E0=A4=82=E0=A4=
+=A1=E0=A5=8D=E0=A4=B8 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=B8=E0=A4=BF=E0=A4=
+=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=
+=E0=A4=BC =E0=A4=AC=E0=A5=88=E0=A4=B2=E0=A5=87=E0=A4=82=E0=A4=B8 =E0=A4=95=
+=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=AD=E0=A5=87=E0=A4=9C=E0=A5=87 =
+=E0=A4=97=E0=A4=8F =E0=A4=8F=E0=A4=B8=E0=A4=8F=E0=A4=AE=E0=A4=8F=E0=A4=B8 /=
+=E0=A4=88=E0=A4=AE=E0=A5=87=E0=A4=B2 =E0=A4=95=E0=A5=8B =E0=A4=95=E0=A4=AD=
+=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=A8=E0=A4=9C=E0=A4=BC=E0=A4=B0=E0=A4=85=
+=E0=A4=82=E0=A4=A6=E0=A4=BE=E0=A4=9C =E0=A4=A8 =E0=A4=95=E0=A4=B0=E0=A5=87=
+=E0=A4=82=E0=A5=A4 =E0=A4=89=E0=A4=B8=E0=A4=95=E0=A5=87 =E0=A4=AC=E0=A5=8D=
+=E0=A4=AF=E0=A5=8C=E0=A4=B0=E0=A5=87 =E0=A4=95=E0=A5=8B =E0=A4=B8=E0=A4=A4=
+=E0=A5=8D=E0=A4=AF=E0=A4=BE=E0=A4=AA=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=B0 =
+=E0=A4=B2=E0=A5=87=E0=A4=82 =E0=A4=94=E0=A4=B0 =E0=A4=AF=E0=A4=A6=E0=A4=BF =
+=E0=A4=95=E0=A5=8B=E0=A4=88 =E0=A4=AB=E0=A4=B0=E0=A5=8D=E0=A4=95 =E0=A4=A8=
+=E0=A4=9C=E0=A4=BC=E0=A4=B0 =E0=A4=86=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=A5=88,=
+ =E0=A4=A4=E0=A5=8B =E0=A4=A4=E0=A4=A4=E0=A5=8D=E0=A4=95=E0=A4=BE=E0=A4=B2 =
+=E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=
+=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=8B =E0=A4=B2=E0=A4=BF=E0=A4=96=E0=A4=BF=
+=E0=A4=A4 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=89=E0=A4=B8=E0=A4=95=E0=A5=80 =
+=E0=A4=B8=E0=A5=82=E0=A4=9A=E0=A4=A8=E0=A4=BE =E0=A4=A6=E0=A5=87=E0=A4=82=
+=E0=A5=A4</li>
+			<li>=E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=
+=A5=8B =E0=A4=AB=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=9F=E0=A5=8D=E0=
+=A4=B0=E0=A4=BE=E0=A4=82=E0=A4=B8=E0=A4=AB=E0=A4=B0 =E0=A4=95=E0=A4=B0=E0=
+=A4=A8=E0=A5=87 =E0=A4=B8=E0=A5=87 =E0=A4=AA=E0=A4=B9=E0=A4=B2=E0=A5=87 =E0=
+=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=
+=A4=AC=E0=A5=88=E0=A4=82=E0=A4=95 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=
+=A4=82=E0=A4=9F =E0=A4=AC=E0=A5=8D=E0=A4=AF=E0=A5=8C=E0=A4=B0=E0=A5=87 =E0=
+=A4=95=E0=A4=BE =E0=A4=B8=E0=A4=A4=E0=A5=8D=E0=A4=AF=E0=A4=BE=E0=A4=AA=E0=
+=A4=A8 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0/=E0=A4=8F=E0=
+=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=A4=9C =E0=A4=95=E0=
+=A5=80 =E0=A4=B5=E0=A5=87=E0=A4=AC=E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=9F =E0=
+=A4=B8=E0=A5=87 =E0=A4=95=E0=A4=B0 =E0=A4=B2=E0=A5=87=E0=A4=82=E0=A5=A4</li=
+>
+			<li>=E0=A4=8F=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=
+=A4=9C =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=B2=E0=A5=87=E0=A4=A8=E0=A4=A6=E0=
+=A5=87=E0=A4=A8 =E0=A4=95=E0=A5=87 =E0=A4=AC=E0=A4=BF=E0=A4=A8=E0=A4=BE, =
+=E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=8B =
+=E0=A4=95=E0=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=A4=AE=
+=E0=A4=9D=E0=A5=8C=E0=A4=A4=E0=A5=87/ =E0=A4=AD=E0=A4=BE=E0=A4=B5=E0=A5=80 =
+=E0=A4=B0=E0=A4=BF=E0=A4=9F=E0=A4=B0=E0=A5=8D=E0=A4=A8 =E0=A4=95=E0=A5=87 =
+=E0=A4=B8=E0=A4=AE=E0=A4=9D=E0=A5=8C=E0=A4=A4=E0=A5=87 =E0=A4=AF=E0=A4=BE =
+=E0=A4=AB=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=A5=87 =E0=A4=A6=
+=E0=A4=BE=E0=A4=B5=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=
+=E0=A4=8F =E0=A4=A6=E0=A4=BF=E0=A4=8F =E0=A4=97=E0=A4=8F =E0=A4=AB=E0=A4=82=
+=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=AF=E0=A4=BE =E0=A4=B8=E0=A4=BF=E0=A4=95=
+=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=
+=A4=BC =E0=A4=95=E0=A5=87 =E0=A4=A6=E0=A4=BE=E0=A4=B5=E0=A5=8B=E0=A4=82 =E0=
+=A4=95=E0=A5=8B =E0=A4=8F=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=
+=A4=82=E0=A4=9C =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=BE =E0=
+=A4=B8=E0=A5=8D=E0=A4=B5=E0=A5=80=E0=A4=95=E0=A4=BE=E0=A4=B0 =E0=A4=A8=E0=
+=A4=B9=E0=A5=80=E0=A4=82 =E0=A4=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=
+=A4=BE=E0=A4=8F=E0=A4=97=E0=A4=BE =E0=A4=AF=E0=A4=A6=E0=A4=BF =E0=A4=86=E0=
+=A4=AA=E0=A4=95=E0=A4=BE =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=
+=A4=B0 =E0=A4=95=E0=A5=8B=E0=A4=88 =E0=A4=A1=E0=A4=BF=E0=A4=AB=E0=A4=BE=E0=
+=A4=B2=E0=A5=8D=E0=A4=9F =E0=A4=95=E0=A4=B0=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=
+=A5=88=E0=A5=A4</li>
+			<li>=E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95 =E0=A4=9C=E0=
+=A4=BE=E0=A4=97=E0=A4=B0=E0=A5=82=E0=A4=95=E0=A4=A4=E0=A4=BE =E0=A4=95=E0=
+=A5=87 =E0=A4=B8=E0=A4=82=E0=A4=AC=E0=A4=82=E0=A4=A7 =E0=A4=AE=E0=A5=87=E0=
+=A4=82 =E0=A4=85=E0=A4=A7=E0=A4=BF=E0=A4=95 =E0=A4=AC=E0=A5=8D=E0=A4=AF=E0=
+=A5=8C=E0=A4=B0=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=
+=A4=95=E0=A5=83=E0=A4=AA=E0=A4=AF=E0=A4=BE =E0=A4=A8=E0=A4=BF=E0=A4=AE=E0=
+=A5=8D=E0=A4=A8=E0=A4=B2=E0=A4=BF=E0=A4=96=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=
+=A5=8B =E0=A4=A6=E0=A5=87=E0=A4=96=E0=A5=87=E0=A4=82-<a href=3D"https://www=
+.nseindia.com/invest/investors-home"><span lang=3D"EN-US" style=3D"font-siz=
+e:12.0pt;line-height:107%;mso-ansi-language:EN-US">www.nseindia.com/invest/=
+investors-home</span></a></li>
+			<li>=E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF=E0=A4=AD=E0=A5=82=E0=
+=A4=A4=E0=A4=BF =E0=A4=AC=E0=A4=BE=E0=A4=9C=E0=A4=BE=E0=A4=B0 =E0=A4=AE=E0=
+=A5=87=E0=A4=82 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6 =E0=A4=B8=E0=
+=A5=87 =E0=A4=B8=E0=A4=82=E0=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=
+=A4=85=E0=A4=A7=E0=A4=BF=E0=A4=95 =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A4=95=E0=
+=A4=BE=E0=A4=B0=E0=A5=80 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=
+=A4=95=E0=A5=83=E0=A4=AA=E0=A4=AF=E0=A4=BE =E0=A4=B8=E0=A5=87=E0=A4=AC=E0=
+=A5=80 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95 =E0=A4=B5=E0=
+=A5=87=E0=A4=AC=E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=9F <a href=3D"https://inve=
+stor.sebi.gov.in/"><span style=3D"font-size: 12.0pt; line-height: 107%; mso=
+-ansi-language: EN-US;">https://investor.sebi.gov.in/</span></a> =E0=A4=94=
+=E0=A4=B0 =E0=A4=B8=E0=A5=87=E0=A4=AC=E0=A5=80 =E0=A4=B8=E0=A4=BE=E2=82=B9=
+=E0=A4=A5=E0=A5=80 / Saa=E2=82=B9thi =E0=A4=AE=E0=A5=8B=E0=A4=AC=E0=A4=BE=
+=E0=A4=87=E0=A4=B2 =E0=A4=90=E0=A4=AA =E0=A4=AA=E0=A4=B0 =E0=A4=9C=E0=A4=BE=
+=E0=A4=8F=E0=A4=82=E0=A5=A4 </li>
+			<li>=E0=A4=B8=E0=A5=87=E0=A4=AC=E0=A5=80 =E0=A4=A8=E0=A5=87 =E0=A4=AA=E0=
+=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF=E0=A4=AD=E0=A5=82=E0=A4=A4=E0=A4=BF =E0=
+=A4=AC=E0=A4=BE=E0=A4=9C=E0=A4=BE=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=AC=E0=
+=A4=BE=E0=A4=B0=E0=A5=87 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=A8=E0=A4=BF=E0=
+=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=87 =E0=
+=A4=9C=E0=A5=8D=E0=A4=9E=E0=A4=BE=E0=A4=A8 =E0=A4=95=E0=A5=8B =E0=A4=AC=E0=
+=A4=A2=E0=A4=BC=E0=A4=BE=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=89=E0=
+=A4=A6=E0=A5=8D=E0=A4=A6=E0=A5=87=E0=A4=B6=E0=A5=8D=E0=A4=AF =E0=A4=B8=E0=
+=A5=87 =E0=A4=8F=E0=A4=95 =E0=A4=A8=E0=A4=BF=E0=A4=83=E0=A4=B6=E0=A5=81=E0=
+=A4=B2=E0=A5=8D=E0=A4=95, =E0=A4=B8=E0=A5=8D=E0=A4=B5=E0=A5=88=E0=A4=9A=E0=
+=A5=8D=E0=A4=9B=E0=A4=BF=E0=A4=95 =E0=A4=91=E0=A4=A8=E0=A4=B2=E0=A4=BE=E0=
+=A4=87=E0=A4=A8 "Investor Certification Examination" =E0=A4=B6=E0=A5=81=E0=
+=A4=B0=E0=A5=82 =E0=A4=95=E0=A5=80 =E0=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=AA=E0=
+=A4=82=E0=A4=9C=E0=A5=80=E0=A4=95=E0=A4=B0=E0=A4=A3 =E0=A4=95=E0=A4=B0=E0=
+=A4=A8=E0=A5=87 =E0=A4=94=E0=A4=B0 =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A4=BE =E0=
+=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=AE=E0=A4=BE=E0=A4=A3=E0=A4=AA=E0=A4=A4=E0=A5=
+=8D=E0=A4=B0 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=AA=E0=A5=8D=E0=A4=
+=A4 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=
+=BF=E0=A4=8F <a href=3D"https://sice.nism.ac.in/"><span lang=3D"EN-US" styl=
+e=3D"font-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">https://sic=
+e.nism.ac.in/</span></a> =E0=A4=AA=E0=A4=B0 =E0=A4=95=E0=A5=8D=E0=A4=B2=E0=
+=A4=BF=E0=A4=95 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=A4</li>
+		</ol>
+=20
+	</div>
+=20
+<p>We are glad to inform you that NSE for your convenience/comfort is provi=
+ding links below on investment concepts, investor alerts, your rights and o=
+bligation as an investor.</p>
+
+<div><a href=3D"https://www.nseindia.com/invest/first-time-investor-know-yo=
+ur-rights"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;=
+mso-ansi-language:EN-US">www.nseindia.com/invest/first-time-investor-know-y=
+our-rights</span></a></div>
+<div><a href=3D"https://www.nseindia.com/invest/first-time-investor-fraud-d=
+os-and-donts"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:10=
+7%;mso-ansi-language:EN-US">www.nseindia.com/invest/first-time-investor-fra=
+ud-dos-and-donts</span></a></div>
+<div><a href=3D"https://www.nseindia.com/invest/file-a-complaint-online"><s=
+pan lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;mso-ansi-lang=
+uage:EN-US">www.nseindia.com/invest/file-a-complaint-online</span></a></div=
+>
+
+<p>You may also visit our website <a href=3D"https://www.nseindia.com"><spa=
+n lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;mso-ansi-langua=
+ge:EN-US">www.nseindia.com</span></a> for any further information that you =
+may require or e-mail your queries to the e-mail ID <b>ignse@nse.co.in</b>,=
+ quoting name of your city in the subject. We would be glad to assist you. =
+</p>
+<br /> =20
+
+<div>  <b>  Information to investors:   </b> </div>
+
+<p>Exchange has introduced trading in Rights Entitlement w.e.f. May 20, 202=
+0. The trades executed, if any, for Rights Entitlement in Capital Market sh=
+all form part of the attached file. Rights Entitlement should not be mistak=
+en for ordinary shares and unless Rights Entitlement are exercised they wil=
+l lose value and no rights (shares) will be available to the investor. The =
+buyer of the Rights Entitlement is required to subscribe for the same befor=
+e the Issue Closing Date, else the same will lapse and no shares will be al=
+lotted.</p>
+<p>In case you need any clarification, please feel free to call on our toll=
+ free number 1800 266 0050 (select option 5 - UCI & Trade Alerts). You can =
+also email us at <b>uci@nse.co.in</b>, quoting your PAN, Mobile no. and you=
+r query.</p>
+<br />
+
+Thanks and Regards,  =20
+<br />   =20
+<div>National Stock Exchange of India Limited<br /></div>
+--1d87dddc4d0bf47c01a72eb74130a1eaf4b45958fdce6838c54718d0f6cc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<html><div style=3D"text-align:left">   =20
+  <p>Dear Investor,</p>
+</div>
+=20
+<p>With reference to SEBI circular ref no. CIR/MIRSD/15/2011dated August 02=
+, 2011, a SMS and email facility has been provided for ease and convenience=
+ of verification of trades.</p>
+Information pertaining to your transactions (Traded value is quantity trade=
+d multiplied by trade price) for   21-MAR-2025   is attached below. Please =
+follow the procedure given below for opening the attachment: <br/>  <br/>
+<div>
+1. Click on the attachment provided with this mail<br/>
+2. You will be prompted for your password.   <br/>  =20
+3. The password is your PAN number in upper case.<br/>
+4. Please check the first 3 letters of PAN provided in the mail attachment,=
+ to avoid mistakes   </div><br/>
+  =20
+<div>The data is being provided to the clients on an &#34;as is&#34; and &#=
+34;where-is&#34; basis, without any warranty. The Exchange shall not be lia=
+ble for any delay or any other interruption which may occur in providing th=
+e data due to any reason including network (Internet) reasons or snags in t=
+he system, break down of the system or any other equipment, server breakdow=
+n, maintenance shutdown, breakdown of communication services or inability o=
+f the Exchange to send the data. In no event shall the Exchange be liable f=
+or any damages, including without limitation direct or indirect, special, i=
+ncidental, or consequential damages, losses or expenses arising in connecti=
+on with the data provided by the Exchange through this facility.</div>
+ =20
+<br/>
+
+<p class=3D"MsoNormal"><b><u><span lang=3D"EN-US" style=3D"font-size:12.0pt=
+;line-height:107%;mso-ansi-language:EN-US">For Information &amp; Education =
+Purpose</span></u></b></p>
+
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-=
+height:107%;mso-ansi-language:EN-US">We would like to draw your attention t=
+o &#34;SEBI vide
+circular dated April 04, 2022, wherein they have introduced the mechanism o=
+f =E2=80=9C<span class=3D"SpellE">Demat</span> Debit and Pledge Instruction=
+ (DDPI)=E2=80=9D. The DDPI shall
+serve the same purpose of POA and significantly mitigate the misuse of POA.=
+</span></p>
+
+<p class=3D"MsoNormal" style=3D"text-align:justify"><span lang=3D"EN-US" st=
+yle=3D"font-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">You shoul=
+d be
+aware that the stockbroker and depository participant cannot directly /
+indirectly compel the clients to execute the DDPI or deny services to the
+client if the client refuses to execute the DDPI.</span></p>
+
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-=
+height:107%;mso-ansi-language:EN-US">Please refer to SEBI Circular dated Oc=
+tober 06, 2022,
+for the list of instructions which client can give to its stockbroker /
+depository participant. You may refer the following link for same:</span></=
+p>
+
+<p class=3D"MsoNormal"><a href=3D"https://nseil.jioswift.com/interface/ctr/=
+0c68692c-2a3c-4ed2-8064-f82ce750d3e1-1742604213234"><span lang=3D"EN-US" st=
+yle=3D"font-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">https://w=
+ww.sebi.gov.in/legal/circulars/oct-2022/execution-of-demat-debit-and-pledge=
+-instruction-ddpi-for-transfer-of-securities-towards-deliveries-settlement-=
+obligations-and-pledging-re-pledging-of-securities-clarification_63724.html=
+</span></a><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;=
+mso-ansi-language:EN-US"></span></p>
+
+<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-=
+height:107%;mso-ansi-language:EN-US">Should you wish to give any instructio=
+ns, these need
+to be signed in physical against each purpose of DDPI. In case of an <span =
+class=3D"SpellE">eSign</span> option is made available, client should be gi=
+ven an
+option to choose the specific purpose(s) of DDPI&#34;.</span></p>
+<div>  <b>  Dos and Don=E2=80=99ts for Retail Investors:   </b> </div>
+
+<br/>
+  =20
+<div> =20
+ =20
+<ol>
+<li>Please deal with SEBI registered intermediaries only.  Ensure that you =
+have complete knowledge of the products and the risks involved before inves=
+ting.</li>
+<li>Offering fixed/guaranteed/regular returns/ capital protection schemes i=
+n stock markets whether written or oral is not allowed. Brokers or any of t=
+heir representatives or Authorised Persons cannot enter into any loan agree=
+ment to pay interest on the funds/securities offered by you.</li>
+<li>Do not fall prey to emails, SMSs and online videos luring you to trade =
+in stock/ securities / schemes promising high returns/profits.</li>
+<li>Ensure to fill all the required details in the &#39;KYC&#39; document b=
+y yourself and receive duly signed copy of your &#39;KYC&#39; documents fro=
+m your broker.</li>
+<li>Trading in derivatives involves high risk and accordingly investors sho=
+uld understand the product well before trading in such segments/products.</=
+li>
+<li>Opt for electronic (e-mail) contract notes/financial statements only if=
+ you are computer savvy and have your own e-mail account.</li>
+<li>Do not share your login ID, password, OTP, TPIN with any person includi=
+ng employees of the broker or Authorised Person under any circumstances.</l=
+i>
+<li>Ensure that all your trades are executed as per your instructions.</li>
+<li>Insure you receive the payout of funds and securities within 1 working =
+day of settlement. In case you have chosen running account of funds, ensure=
+ your account is settled on first Friday of every month / quarter as opted =
+for.</li>
+<li>Dealing in cash is prohibited. Do not place any securities with the bro=
+ker or associate of the broker or authorized person of the broker. Do not t=
+ransfer securities as margin/ collateral to the broker and such securities =
+only must be pledged from the client demat account.</li>
+<li>Opt for Demat Debit and Pledge Instruction (DDPI) only for transfer of =
+securities for deliveries/settlement obligations, initiating pledging of se=
+curities for margins, and for mutual fund/open offer transactions on Exchan=
+ge platform. DDPI/PoA are optional and should not be insisted on for openin=
+g the account.</li>
+<li>Always keep your mobile number and email id updated with your broker. D=
+on&#39;t ignore any SMSs / e-mails with regards to contract notes/trades/fu=
+nds and securities balances sent by broker/Exchange. Verify the details of =
+the same and report discrepancy, if any, to your broker in writing immediat=
+ely.</li>
+<li>Please verify the bank account details of the broker from the website o=
+f broker/Exchange before transferring funds to the broker.</li>
+<li>Claims for funds or securities given to the broker under any arrangemen=
+t/ agreement of indicative return or claims for funds, without transactions=
+ on the Exchange will not be accepted by the Exchange in case of default by=
+ your broker.</li>
+<li>For more details on Investor awareness, please visit-<a href=3D"https:/=
+/nseil.jioswift.com/interface/ctr/1d9377dc-3931-46c7-82d8-48f32cda79c9-1742=
+604213234"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;=
+mso-ansi-language:EN-US">www.nseindia.com/invest/investors-home</span></a><=
+/li>
+<li>For more information related to investments in securities market, pleas=
+e visit SEBI Investor Website <a href=3D"https://nseil.jioswift.com/interfa=
+ce/ctr/87f0d601-f8f0-4ab6-bb74-618c585e6269-1742604213234"><span style=3D"f=
+ont-size: 12.0pt; line-height: 107%; mso-ansi-language: EN-US;">https://inv=
+estor.sebi.gov.in/</span></a> and SEBI Saa=E2=82=B9thi Mobile App.</li>
+<li>SEBI has launched a free, voluntary online &#34;Investor Certification =
+Examination&#34; aimed at enhancing investors&#39; knowledge about Securiti=
+es Market. To register and get your certificate - click on the link - <a hr=
+ef=3D"https://nseil.jioswift.com/interface/ctr/7f29ed85-869c-4680-b315-b965=
+18183eeb-1742604213234"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line=
+-height:107%;mso-ansi-language:EN-US">https://sice.nism.ac.in/</span></a></=
+li>
+</ol>
+</div>
+=20
+<p lang=3D"hi">
+</p><div> <b>  =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95 =E0=
+=A4=95=E0=A5=8D=E0=A4=AF=E0=A4=BE =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=
+=A4=94=E0=A4=B0 =E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A4=BE =E0=A4=A8 =E0=A4=95=E0=
+=A4=B0=E0=A5=87=E0=A4=82: </b> </div>
+=20
+	<div>
+		<ol>
+			<li>=E0=A4=95=E0=A5=83=E0=A4=AA=E0=A4=AF=E0=A4=BE =E0=A4=B8=E0=A4=BF=E0=
+=A4=B0=E0=A5=8D=E0=A4=AB =E0=A4=B8=E0=A5=87=E0=A4=AC=E0=A5=80 =E0=A4=95=E0=
+=A5=87 =E0=A4=AF=E0=A4=B9=E0=A4=BE=E0=A4=82 =E0=A4=B0=E0=A4=9C=E0=A4=BF=E0=
+=A4=B8=E0=A5=8D=E0=A4=9F=E0=A4=B0=E0=A5=8D=E0=A4=A1 =E0=A4=87=E0=A4=82=E0=
+=A4=9F=E0=A4=B0=E0=A4=AE=E0=A5=80=E0=A4=A1=E0=A4=AF=E0=A4=B0=E0=A5=80=E0=A4=
+=9C=E0=A4=BC =E0=A4=95=E0=A5=87 =E0=A4=B8=E0=A4=BE=E0=A4=A5 =E0=A4=B9=E0=A5=
+=80 =E0=A4=A1=E0=A5=80=E0=A4=B2 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=
+=A4 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6 =E0=A4=95=E0=A4=B0=E0=A4=
+=A8=E0=A5=87 =E0=A4=B8=E0=A5=87 =E0=A4=AA=E0=A4=B9=E0=A4=B2=E0=A5=87 =E0=A4=
+=A4=E0=A4=AF =E0=A4=95=E0=A4=B0 =E0=A4=B2=E0=A5=87=E0=A4=82 =E0=A4=95=E0=A4=
+=BF =E0=A4=86=E0=A4=AA =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=A1=E0=A4=
+=95=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B8 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=
+=B8=E0=A4=AE=E0=A5=8D=E0=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=A4=
+=9C=E0=A5=8B=E0=A4=96=E0=A4=BF=E0=A4=AE =E0=A4=95=E0=A5=87 =E0=A4=AC=E0=A4=
+=BE=E0=A4=B0=E0=A5=87 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=AA=E0=A5=82=E0=A4=
+=B0=E0=A5=80 =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A4=95=E0=A4=BE=E0=A4=B0=E0=A5=
+=80 =E0=A4=B0=E0=A4=96=E0=A4=A4=E0=A5=87 =E0=A4=B9=E0=A5=88=E0=A4=82=E0=A5=
+=A4 </li>
+			<li>=E0=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=89=E0=A4=95 =E0=A4=AE=E0=A4=BE=E0=
+=A4=B0=E0=A5=8D=E0=A4=95=E0=A5=87=E0=A4=9F =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=
+=A4=B2=E0=A4=BF=E0=A4=96=E0=A4=BF=E0=A4=A4 =E0=A4=AF=E0=A4=BE =E0=A4=AE=E0=
+=A5=8C=E0=A4=96=E0=A4=BF=E0=A4=95 =E0=A4=B0=E0=A5=82=E0=A4=AA =E0=A4=B8=E0=
+=A5=87 =E0=A4=AB=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A5=8D=E0=A4=A1/ =E0=
+=A4=97=E0=A4=BE=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A4=9F=E0=A5=87=E0=A4=A1/=E0=
+=A4=B0=E0=A5=87=E0=A4=97=E0=A5=8D=E0=A4=AF=E0=A5=81=E0=A4=B2=E0=A4=B0 =E0=
+=A4=B0=E0=A4=BF=E0=A4=9F=E0=A4=B0=E0=A5=8D=E0=A4=A8=E0=A5=8D=E0=A4=B8/=E0=
+=A4=95=E0=A5=88=E0=A4=AA=E0=A4=BF=E0=A4=9F=E0=A4=B2 =E0=A4=AA=E0=A5=8D=E0=
+=A4=B0=E0=A5=8B=E0=A4=9F=E0=A5=87=E0=A4=95=E0=A5=8D=E0=A4=B6=E0=A4=A8 =E0=
+=A4=B8=E0=A5=8D=E0=A4=95=E0=A5=80=E0=A4=AE=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=
+=A5=80 =E0=A4=91=E0=A4=AB=E0=A4=B0 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=
+=A4=95=E0=A5=80 =E0=A4=85=E0=A4=A8=E0=A5=81=E0=A4=AE=E0=A4=A4=E0=A4=BF =E0=
+=A4=A8=E0=A4=B9=E0=A5=80=E0=A4=82 =E0=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=AC=E0=
+=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0=E0=A5=8D=E0=A4=B8 =E0=A4=AF=E0=
+=A4=BE =E0=A4=89=E0=A4=A8=E0=A4=95=E0=A5=87 =E0=A4=95=E0=A4=BF=E0=A4=B8=E0=
+=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF=E0=
+=A4=A8=E0=A4=BF=E0=A4=A7=E0=A4=BF =E0=A4=AF=E0=A4=BE =E0=A4=AA=E0=A5=8D=E0=
+=A4=B0=E0=A4=BE=E0=A4=A7=E0=A4=BF=E0=A4=95=E0=A5=83=E0=A4=A4 =E0=A4=B5=E0=
+=A5=8D=E0=A4=AF=E0=A4=95=E0=A5=8D=E0=A4=A4=E0=A4=BF=E0=A4=AF=E0=A5=8B=E0=A4=
+=82 =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=BE =E0=A4=86=E0=A4=
+=AA=E0=A4=95=E0=A5=87 =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=
+=BE =E0=A4=91=E0=A4=AB=E0=A4=B0 =E0=A4=95=E0=A4=BF=E0=A4=8F =E0=A4=9C=E0=A4=
+=BE=E0=A4=A8=E0=A5=87 =E0=A4=B5=E0=A4=BE=E0=A4=B2=E0=A5=87 =E0=A4=AB=E0=A4=
+=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 /=E0=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=
+=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=
+=AA=E0=A4=B0 =E0=A4=AC=E0=A5=8D=E0=A4=AF=E0=A4=BE=E0=A4=9C =E0=A4=95=E0=A5=
+=87 =E0=A4=AD=E0=A5=81=E0=A4=97=E0=A4=A4=E0=A4=BE=E0=A4=A8 =E0=A4=95=E0=A5=
+=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B2=E0=A5=8B=E0=A4=A8 =E0=A4=B8=E0=A4=
+=AE=E0=A4=9D=E0=A5=8C=E0=A4=A4=E0=A4=BE =E0=A4=A8=E0=A4=B9=E0=A5=80=E0=A4=
+=82 =E0=A4=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE =E0=A4=B8=E0=A4=
+=95=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=A5=88=E0=A5=A4</li>
+			<li>=E0=A4=B9=E0=A4=BE=E0=A4=88 =E0=A4=B0=E0=A4=BF=E0=A4=9F=E0=A4=B0=E0=
+=A5=8D=E0=A4=A8/=E0=A4=B2=E0=A4=BE=E0=A4=AD =E0=A4=95=E0=A4=BE =E0=A4=B5=E0=
+=A4=BE=E0=A4=A6=E0=A4=BE =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=B5=E0=
+=A4=BE=E0=A4=B2=E0=A5=87 =E0=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=89=E0=A4=95/=E0=
+=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=
+=9F=E0=A5=80=E0=A4=9C=E0=A4=BC/=E0=A4=B8=E0=A5=8D=E0=A4=95=E0=A5=80=E0=A4=
+=AE=E0=A5=8B=E0=A4=82 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=9F=E0=A5=8D=E0=A4=
+=B0=E0=A5=87=E0=A4=A1 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A4=
+=BE =E0=A4=B2=E0=A4=BE=E0=A4=B2=E0=A4=9A =E0=A4=A6=E0=A5=87=E0=A4=A8=E0=A5=
+=87 =E0=A4=B5=E0=A4=BE=E0=A4=B2=E0=A5=80 =E0=A4=88=E0=A4=AE=E0=A5=87=E0=A4=
+=B2, =E0=A4=8F=E0=A4=B8=E0=A4=8F=E0=A4=AE=E0=A4=8F=E0=A4=B8 =E0=A4=A4=E0=A4=
+=A5=E0=A4=BE =E0=A4=91=E0=A4=A8=E0=A4=B2=E0=A4=BE=E0=A4=87=E0=A4=A8 =E0=A4=
+=B5=E0=A5=80=E0=A4=A1=E0=A4=BF=E0=A4=AF=E0=A5=8B =E0=A4=AA=E0=A4=B0 =E0=A4=
+=AD=E0=A4=B0=E0=A5=8B=E0=A4=B8=E0=A4=BE =E0=A4=A8 =E0=A4=95=E0=A4=B0=E0=A5=
+=87=E0=A4=82=E0=A5=A4</li>
+			<li>=E2=80=98=E0=A4=95=E0=A5=87=E0=A4=B5=E0=A4=BE=E0=A4=88=E0=A4=B8=E0=
+=A5=80=E2=80=99 =E0=A4=A6=E0=A4=B8=E0=A5=8D=E0=A4=A4=E0=A4=BE=E0=A4=B5=E0=
+=A5=87=E0=A4=9C=E0=A4=BC =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=B8=E0=A4=AD=E0=
+=A5=80 =E0=A4=86=E0=A4=B5=E0=A4=B6=E0=A5=8D=E0=A4=AF=E0=A4=95 =E0=A4=AC=E0=
+=A5=8D=E0=A4=AF=E0=A5=8C=E0=A4=B0=E0=A4=BE =E0=A4=B8=E0=A5=8D=E0=A4=B5=E0=
+=A4=AF=E0=A4=82 =E0=A4=B9=E0=A5=80 =E0=A4=AD=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=
+=A4=94=E0=A4=B0 =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AC=E0=A5=8D=E0=
+=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=B8=E0=A5=87 =E0=A4=85=E0=A4=AA=E0=
+=A4=A8=E0=A5=87 =E2=80=98=E0=A4=95=E0=A5=87=E0=A4=B5=E0=A4=BE=E0=A4=88=E0=
+=A4=B8=E0=A5=80=E2=80=99 =E0=A4=A6=E0=A4=B8=E0=A5=8D=E0=A4=A4=E0=A4=BE=E0=
+=A4=B5=E0=A5=87=E0=A4=9C=E0=A4=BC=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=80 =E0=
+=A4=B5=E0=A4=BF=E0=A4=A7=E0=A4=BF=E0=A4=B5=E0=A4=A4 =E0=A4=B0=E0=A5=82=E0=
+=A4=AA =E0=A4=B8=E0=A5=87 =E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=A8 =E0=A4=95=E0=
+=A5=80 =E0=A4=97=E0=A4=88 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF =E0=
+=A4=95=E0=A5=8B =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=AA=E0=A5=8D=E0=
+=A4=A4 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=A4</li>
+			<li>=E0=A4=A1=E0=A5=87=E0=A4=B0=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=9F=E0=
+=A4=BF=E0=A4=B5 =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A4=BF=E0=
+=A4=82=E0=A4=97 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=9C=E0=A5=8B=E0=A4=96=E0=
+=A4=BF=E0=A4=AE =E0=A4=B9=E0=A5=8B =E0=A4=B8=E0=A4=95=E0=A4=A4=E0=A5=87 =E0=
+=A4=B9=E0=A5=88=E0=A4=82 =E0=A4=94=E0=A4=B0 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=
+=A5=87=E0=A4=B6=E0=A4=95=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=8B =E0=A4=95=E0=
+=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=A4=AE=E0=A5=8D=E0=
+=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=A4=89=E0=A4=A4=E0=A5=8D=E0=
+=A4=AA=E0=A4=BE=E0=A4=A6 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=9F=E0=A5=8D=E0=
+=A4=B0=E0=A5=87=E0=A4=A1 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=B8=E0=
+=A5=87 =E0=A4=AA=E0=A5=82=E0=A4=B0=E0=A5=8D=E0=A4=B5 =E0=A4=89=E0=A4=B8=E0=
+=A4=95=E0=A4=BE =E0=A4=AA=E0=A5=82=E0=A4=B0=E0=A5=8D=E0=A4=A3 =E0=A4=9C=E0=
+=A5=8D=E0=A4=9E=E0=A4=BE=E0=A4=A8 =E0=A4=94=E0=A4=B0 =E0=A4=9C=E0=A4=BE=E0=
+=A4=A8=E0=A4=95=E0=A4=BE=E0=A4=B0=E0=A5=80 =E0=A4=B2=E0=A5=87=E0=A4=A8=E0=
+=A4=BE =E0=A4=86=E0=A4=B5=E0=A4=B6=E0=A5=8D=E0=A4=AF=E0=A4=95 =E0=A4=B9=E0=
+=A5=88=E0=A5=A4</li>
+			<li>=E0=A4=AF=E0=A4=A6=E0=A4=BF =E0=A4=86=E0=A4=AA =E0=A4=95=E0=A4=AE=E0=
+=A5=8D=E0=A4=AA=E0=A5=8D=E0=A4=AF=E0=A5=82=E0=A4=9F=E0=A4=B0 =E0=A4=B8=E0=
+=A5=87 =E0=A4=AC=E0=A4=B9=E0=A5=81=E0=A4=A4 =E0=A4=AD=E0=A4=B2=E0=A5=80-=E0=
+=A4=AD=E0=A4=BE=E0=A4=82=E0=A4=A4=E0=A4=BF =E0=A4=AA=E0=A4=B0=E0=A4=BF=E0=
+=A4=9A=E0=A4=BF=E0=A4=A4 =E0=A4=B9=E0=A5=88=E0=A4=82 =E0=A4=A4=E0=A4=A5=E0=
+=A4=BE =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A4=BE =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=
+=A4=BE =E0=A4=88-=E0=A4=AE=E0=A5=87=E0=A4=B2 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=
+=A4=89=E0=A4=82=E0=A4=9F =E0=A4=B9=E0=A5=88, =E0=A4=95=E0=A5=87=E0=A4=B5=E0=
+=A4=B2 =E0=A4=A4=E0=A4=AD=E0=A5=80 =E0=A4=B9=E0=A5=80 =E0=A4=87=E0=A4=B2=E0=
+=A5=87=E0=A4=95=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=A8=E0=A4=
+=BF=E0=A4=95 (=E0=A4=88-=E0=A4=AE=E0=A5=87=E0=A4=B2) =E0=A4=95=E0=A5=89=E0=
+=A4=A8=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=95=E0=A5=8D=E0=A4=
+=9F =E0=A4=A8=E0=A5=8B=E0=A4=9F=E0=A5=8D=E0=A4=B8 / =E0=A4=AB=E0=A4=BE=E0=
+=A4=88=E0=A4=A8=E0=A5=87=E0=A4=82=E0=A4=B6=E0=A4=BF=E0=A4=AF=E0=A4=B2 =E0=
+=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=87=E0=A4=9F=E0=A4=AE=E0=A5=87=E0=A4=82=E0=A4=
+=9F=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=A4=BE =E0=A4=B5=E0=A4=BF=E0=A4=95=E0=A4=
+=B2=E0=A5=8D=E0=A4=AA =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=A5=87=E0=A4=82=E0=A5=
+=A4</li>
+			<li>=E0=A4=95=E0=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=
+=A5=8D=E0=A4=A5=E0=A4=BF=E0=A4=A4=E0=A4=BF =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=
+=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=
+=A4=95=E0=A4=B0=E0=A5=8D=E0=A4=AE=E0=A4=9A=E0=A4=BE=E0=A4=B0=E0=A5=80 =E0=
+=A4=AF=E0=A4=BE =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=A7=E0=A4=BF=E0=
+=A4=95=E0=A5=83=E0=A4=A4 =E0=A4=B5=E0=A5=8D=E0=A4=AF=E0=A4=95=E0=A5=8D=E0=
+=A4=A4=E0=A4=BF =E0=A4=B8=E0=A4=B9=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=BF=E0=
+=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B5=E0=A5=8D=E0=A4=AF=E0=A4=95=E0=
+=A5=8D=E0=A4=A4=E0=A4=BF =E0=A4=95=E0=A5=87 =E0=A4=B8=E0=A4=BE=E0=A4=A5 =E0=
+=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=80 =E0=A4=B2=E0=A5=89=E0=A4=97=E0=A4=BF=E0=
+=A4=A8 =E0=A4=86=E0=A4=88=E0=A4=A1=E0=A5=80, =E0=A4=AA=E0=A4=BE=E0=A4=B8=E0=
+=A4=B5=E0=A4=B0=E0=A5=8D=E0=A4=A1, =E0=A4=93=E0=A4=9F=E0=A5=80=E0=A4=AA=E0=
+=A5=80 =E0=A4=94=E0=A4=B0 =E0=A4=9F=E0=A5=80-=E0=A4=AA=E0=A4=BF=E0=A4=A8 =
+=E0=A4=95=E0=A5=8B =E0=A4=B8=E0=A4=BE=E0=A4=9D=E0=A4=BE =E0=A4=A8 =E0=A4=95=
+=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=A4</li>
+			<li>=E0=A4=A4=E0=A4=AF =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=95=E0=
+=A4=BF =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=87 =E0=A4=B8=E0=A4=AD=E0=A5=80 =E0=
+=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=
+=A5=8B =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=87 =E0=A4=A8=E0=A4=BF=E0=A4=B0=E0=
+=A5=8D=E0=A4=A6=E0=A5=87=E0=A4=B6=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=87 =E0=
+=A4=85=E0=A4=A8=E0=A5=81=E0=A4=B8=E0=A4=BE=E0=A4=B0 =E0=A4=B9=E0=A5=80 =E0=
+=A4=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE=E0=A4=A4=E0=A4=BE =E0=
+=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=8F=E0=A4=A8=E0=A4=8F=E0=A4=B8=E0=A4=88 =E0=
+=A4=B5=E0=A5=87=E0=A4=AC=E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=9F =E0=A4=AA=E0=
+=A4=B0 =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1 =E0=A4=B5=E0=A5=87=E0=
+=A4=B0=E0=A4=BF=E0=A4=AB=E0=A4=BF=E0=A4=95=E0=A5=87=E0=A4=B6=E0=A4=A8 =E0=
+=A4=B8=E0=A5=81=E0=A4=B5=E0=A4=BF=E0=A4=A7=E0=A4=BE =E0=A4=89=E0=A4=AA=E0=
+=A4=B2=E0=A4=AC=E0=A5=8D=E0=A4=A7 =E0=A4=B9=E0=A5=88 =E0=A4=9C=E0=A4=BF=E0=
+=A4=B8=E0=A5=87 =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=80 =E0=A4=A4=E0=A4=B0=E0=
+=A4=AB =E0=A4=B8=E0=A5=87 =E0=A4=95=E0=A4=BF=E0=A4=8F =E0=A4=97=E0=A4=8F =
+=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=95=
+=E0=A5=8B =E0=A4=B5=E0=A5=87=E0=A4=B0=E0=A5=80=E0=A4=AB=E0=A4=BE=E0=A4=88 =
+=E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=
+=E0=A4=8F =E0=A4=87=E0=A4=B8=E0=A5=8D=E0=A4=A4=E0=A5=87=E0=A4=AE=E0=A4=BE=
+=E0=A4=B2 =E0=A4=95=E0=A4=B0 =E0=A4=B8=E0=A4=95=E0=A4=A4=E0=A5=87 =E0=A4=B9=
+=E0=A5=88=E0=A4=82=E0=A5=A4 </li>
+			<li>=E0=A4=B8=E0=A5=81=E0=A4=A8=E0=A4=BF=E0=A4=B6=E0=A5=8D=E0=A4=9A=E0=
+=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=95=E0=A4=BF =E0=
+=A4=B8=E0=A5=87=E0=A4=9F=E0=A4=B2=E0=A4=AE=E0=A5=87=E0=A4=82=E0=A4=9F =E0=
+=A4=95=E0=A5=87 1 =E0=A4=A6=E0=A4=BF=E0=A4=A8 =E0=A4=95=E0=A5=87 =E0=A4=85=
+=E0=A4=82=E0=A4=A6=E0=A4=B0 =E0=A4=86=E0=A4=AA=E0=A4=95=E0=A5=8B =E0=A4=AB=
+=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=B8=
+=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=
+=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A4=BE =E0=A4=AA=E0=A5=87=E0=A4=86=E0=
+=A4=89=E0=A4=9F =E0=A4=AE=E0=A4=BF=E0=A4=B2 =E0=A4=9C=E0=A4=BE=E0=A4=A4=E0=
+=A4=BE =E0=A4=B9=E0=A5=88=E0=A5=A4 =E0=A4=AF=E0=A4=A6=E0=A4=BF =E0=A4=86=E0=
+=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AB=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=
+=A4=95=E0=A5=87 =E0=A4=B0=E0=A4=A8=E0=A4=BF=E0=A4=82=E0=A4=97 =E0=A4=85=E0=
+=A4=95=E0=A4=BE=E0=A4=89=E0=A4=82=E0=A4=9F=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=
+=A5=8B =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=A4=BE =E0=A4=B9=E0=A5=88, =E0=A4=A4=
+=E0=A5=8B =E0=A4=B8=E0=A5=81=E0=A4=A8=E0=A4=BF=E0=A4=B6=E0=A5=8D=E0=A4=9A=
+=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=95=E0=A4=BF =
+=E0=A4=9C=E0=A5=88=E0=A4=B8=E0=A4=BE =E0=A4=B5=E0=A4=BF=E0=A4=95=E0=A4=B2=
+=E0=A5=8D=E0=A4=AA =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=A4=BE =E0=A4=97=E0=A4=AF=
+=E0=A4=BE =E0=A4=B9=E0=A5=88, =E0=A4=89=E0=A4=B8=E0=A5=80 =E0=A4=95=E0=A5=
+=87 =E0=A4=85=E0=A4=A8=E0=A5=81=E0=A4=B8=E0=A4=BE=E0=A4=B0 =E0=A4=86=E0=A4=
+=AA=E0=A4=95=E0=A5=87 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=A4=82=E0=A4=
+=9F =E0=A4=95=E0=A5=8B =E0=A4=B9=E0=A4=B0 =E0=A4=AE=E0=A4=B9=E0=A5=80=E0=A4=
+=A8=E0=A5=87 /=E0=A4=A4=E0=A4=BF=E0=A4=AE=E0=A4=BE=E0=A4=B9=E0=A5=80 =E0=A4=
+=95=E0=A5=87 =E0=A4=AA=E0=A4=B9=E0=A4=B2=E0=A5=87 =E0=A4=B6=E0=A5=81=E0=A4=
+=95=E0=A5=8D=E0=A4=B0=E0=A4=B5=E0=A4=BE=E0=A4=B0 =E0=A4=95=E0=A5=8B =E0=A4=
+=B8=E0=A5=87=E0=A4=9F=E0=A4=B2 =E0=A4=95=E0=A4=B0 =E0=A4=A6=E0=A4=BF=E0=A4=
+=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=A5=88=E0=A5=
+=A4</li>
+			<li>=E0=A4=A8=E0=A4=95=E0=A4=A6 =E0=A4=B8=E0=A5=8C=E0=A4=A6=E0=A5=87=E0=
+=A4=AC=E0=A4=BE=E0=A4=9C=E0=A5=80 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=
+=A4=BF=E0=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=A4=B9=E0=A5=88=E0=
+=A5=A4 =E0=A4=95=E0=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=
+=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=
+=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=8B =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=
+=8B=E0=A4=95=E0=A4=B0 =E0=A4=AF=E0=A4=BE =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=
+=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=8F=E0=A4=B8=E0=A5=8B=E0=A4=
+=B8=E0=A4=BF=E0=A4=8F=E0=A4=9F =E0=A4=AF=E0=A4=BE =E0=A4=AC=E0=A5=8D=E0=A4=
+=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=AA=E0=A5=8D=E0=A4=
+=B0=E0=A4=BE=E0=A4=A7=E0=A4=BF=E0=A4=95=E0=A5=83=E0=A4=A4 =E0=A4=B5=E0=A5=
+=8D=E0=A4=AF=E0=A4=95=E0=A5=8D=E0=A4=A4=E0=A4=BF =E0=A4=95=E0=A5=8B =E0=A4=
+=A8 =E0=A4=A6=E0=A5=87=E0=A4=82=E0=A5=A4 =E0=A4=AE=E0=A4=BE=E0=A4=B0=E0=A5=
+=8D=E0=A4=9C=E0=A4=BF=E0=A4=A8 /=E0=A4=95=E0=A5=8B=E0=A4=B2=E0=A5=87=E0=A4=
+=9F=E0=A5=8D=E0=A4=B0=E0=A4=B2 =E0=A4=95=E0=A5=87 =E0=A4=A4=E0=A5=8C=E0=A4=
+=B0 =E0=A4=AA=E0=A4=B0 =E0=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=
+=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=
+=8B =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=
+=8B =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=82=E0=A4=B8=E0=A4=AB=E0=A4=
+=B0 =E0=A4=A8 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82 =E0=A4=A4=E0=A4=A5=E0=A4=
+=BE =E0=A4=87=E0=A4=B8 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=95=E0=A4=BE=E0=A4=
+=B0 =E0=A4=95=E0=A5=80 =E0=A4=B8=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=
+=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=
+=8B =E0=A4=95=E0=A5=87=E0=A4=B5=E0=A4=B2 =E0=A4=95=E0=A5=8D=E0=A4=B2=E0=A4=
+=BE=E0=A4=87=E0=A4=82=E0=A4=9F =E0=A4=A1=E0=A4=BF=E0=A4=AE=E0=A5=87=E0=A4=
+=9F =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=A4=82=E0=A4=9F =E0=A4=B8=E0=A5=
+=87 =E0=A4=B9=E0=A5=80 =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=A5=87=E0=A4=9C =E0=A4=
+=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A4=BE =E0=A4=
+=9A=E0=A4=BE=E0=A4=B9=E0=A4=BF=E0=A4=8F=E0=A5=A4</li>
+			<li>=E0=A4=A1=E0=A4=BF=E0=A4=B2=E0=A5=80=E0=A4=B5=E0=A4=B0=E0=A5=80/=E0=
+=A4=B8=E0=A5=87=E0=A4=9F=E0=A4=B2=E0=A4=AE=E0=A5=87=E0=A4=82=E0=A4=9F =E0=
+=A4=AC=E0=A4=BE=E0=A4=A7=E0=A5=8D=E0=A4=AF=E0=A4=A4=E0=A4=BE=E0=A4=93=E0=A4=
+=82 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B8=E0=A4=BF=E0=A4=
+=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=
+=E0=A4=BC =E0=A4=95=E0=A5=87 =E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=82=
+=E0=A4=B8=E0=A4=AB=E0=A4=B0, =E0=A4=AE=E0=A4=BE=E0=A4=B0=E0=A5=8D=E0=A4=9C=
+=E0=A4=BF=E0=A4=A8 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B8=
+=E0=A4=BF=E0=A4=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=
+=A5=80=E0=A4=9C=E0=A4=BC =E0=A4=95=E0=A5=8B =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=
+=A5=87=E0=A4=9C =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=80 =E0=
+=A4=B6=E0=A5=81=E0=A4=B0=E0=A5=81=E0=A4=86=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=
+=A4=A8=E0=A5=87, =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=8F=E0=A4=95=E0=A5=8D=E0=
+=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=A4=9C =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=
+=A5=87=E0=A4=9F=E0=A4=AB=E0=A5=89=E0=A4=B0=E0=A5=8D=E0=A4=AE =E0=A4=AA=E0=
+=A4=B0 =E0=A4=AE=E0=A5=8D=E0=A4=AF=E0=A5=82=E0=A4=9A=E0=A4=B2 =E0=A4=AB=E0=
+=A4=82=E0=A4=A1/=E0=A4=93=E0=A4=AA=E0=A4=A8 =E0=A4=91=E0=A4=AB=E0=A4=B0 =E0=
+=A4=B2=E0=A5=87=E0=A4=A8=E0=A4=A6=E0=A5=87=E0=A4=A8=E0=A5=8B=E0=A4=82 =E0=
+=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=B9=E0=A5=80 =E0=A4=A1=E0=
+=A5=80=E0=A4=A1=E0=A5=80=E0=A4=AA=E0=A5=80=E0=A4=86=E0=A4=88 (=E0=A4=A1=E0=
+=A4=BF=E0=A4=AE=E0=A5=87=E0=A4=9F =E0=A4=A1=E0=A5=87=E0=A4=AC=E0=A4=BF=E0=
+=A4=9F =E0=A4=8F=E0=A4=A3=E0=A5=8D=E0=A4=A1 =E0=A4=AA=E0=A5=8D=E0=A4=B2=E0=
+=A5=87=E0=A4=9C =E0=A4=87=E0=A4=82=E0=A4=B8=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=
+=A4=B0=E0=A4=95=E0=A5=8D=E0=A4=B6=E0=A4=A8) =E0=A4=95=E0=A4=BE =E0=A4=B5=E0=
+=A4=BF=E0=A4=95=E0=A4=B2=E0=A5=8D=E0=A4=AA =E0=A4=9A=E0=A5=81=E0=A4=A8=E0=
+=A5=87=E0=A4=82=E0=A5=A4 =E0=A4=A1=E0=A5=80=E0=A4=A1=E0=A5=80=E0=A4=AA=E0=
+=A5=80=E0=A4=86=E0=A4=88 /=E0=A4=AA=E0=A5=80=E0=A4=93=E0=A4=8F =E0=A4=B5=E0=
+=A5=88=E0=A4=95=E0=A4=B2=E0=A5=8D=E0=A4=AA=E0=A4=BF=E0=A4=95 =E0=A4=B9=E0=
+=A5=88=E0=A4=82 =E0=A4=94=E0=A4=B0 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=
+=A4=82=E0=A4=9F =E0=A4=96=E0=A5=8B=E0=A4=B2=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=
+=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=89=E0=A4=A8=E0=A4=95=E0=A5=87 =E0=
+=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=9C=E0=A4=AC=E0=A4=B0=E0=A4=A6=E0=A4=B8=E0=
+=A5=8D=E0=A4=A4=E0=A5=80 =E0=A4=A8=E0=A4=B9=E0=A5=80=E0=A4=82 =E0=A4=95=E0=
+=A5=80 =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A5=80 =E0=A4=9A=E0=A4=BE=E0=A4=B9=E0=
+=A4=BF=E0=A4=8F=E0=A5=A4</li>
+			<li>=E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=
+=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=AA=E0=A4=BE=E0=A4=B8 =E0=
+=A4=B9=E0=A4=AE=E0=A5=87=E0=A4=B6=E0=A4=BE =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=
+=A5=87 =E0=A4=AE=E0=A5=8B=E0=A4=AC=E0=A4=BE=E0=A4=87=E0=A4=B2 =E0=A4=A8=E0=
+=A4=AE=E0=A5=8D=E0=A4=AC=E0=A4=B0 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=88=E0=
+=A4=AE=E0=A5=87=E0=A4=B2 =E0=A4=86=E0=A4=88=E0=A4=A1=E0=A5=80 =E0=A4=95=E0=
+=A5=8B =E0=A4=85=E0=A4=AA=E0=A4=A1=E0=A5=87=E0=A4=9F =E0=A4=B0=E0=A4=96=E0=
+=A5=87=E0=A4=82=E0=A5=A4 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=
+=A4=B0/=E0=A4=8F=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=
+=A4=9C =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=BE =E0=A4=95=E0=
+=A5=89=E0=A4=A8=E0=A5=8D=E0=A4=9F=E0=A5=8D=E0=A4=B0=E0=A5=87=E0=A4=95=E0=A5=
+=8D=E0=A4=9F =E0=A4=A8=E0=A5=8B=E0=A4=9F=E0=A5=8D=E0=A4=B8/=E0=A4=9F=E0=A5=
+=8D=E0=A4=B0=E0=A5=87=E0=A4=A1=E0=A5=8D=E0=A4=B8/=E0=A4=AB=E0=A4=82=E0=A4=
+=A1=E0=A5=8D=E0=A4=B8 =E0=A4=A4=E0=A4=A5=E0=A4=BE =E0=A4=B8=E0=A4=BF=E0=A4=
+=95=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=
+=E0=A4=BC =E0=A4=AC=E0=A5=88=E0=A4=B2=E0=A5=87=E0=A4=82=E0=A4=B8 =E0=A4=95=
+=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=A4=AD=E0=A5=87=E0=A4=9C=E0=A5=87 =
+=E0=A4=97=E0=A4=8F =E0=A4=8F=E0=A4=B8=E0=A4=8F=E0=A4=AE=E0=A4=8F=E0=A4=B8 /=
+=E0=A4=88=E0=A4=AE=E0=A5=87=E0=A4=B2 =E0=A4=95=E0=A5=8B =E0=A4=95=E0=A4=AD=
+=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=A8=E0=A4=9C=E0=A4=BC=E0=A4=B0=E0=A4=85=
+=E0=A4=82=E0=A4=A6=E0=A4=BE=E0=A4=9C =E0=A4=A8 =E0=A4=95=E0=A4=B0=E0=A5=87=
+=E0=A4=82=E0=A5=A4 =E0=A4=89=E0=A4=B8=E0=A4=95=E0=A5=87 =E0=A4=AC=E0=A5=8D=
+=E0=A4=AF=E0=A5=8C=E0=A4=B0=E0=A5=87 =E0=A4=95=E0=A5=8B =E0=A4=B8=E0=A4=A4=
+=E0=A5=8D=E0=A4=AF=E0=A4=BE=E0=A4=AA=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=A4=B0 =
+=E0=A4=B2=E0=A5=87=E0=A4=82 =E0=A4=94=E0=A4=B0 =E0=A4=AF=E0=A4=A6=E0=A4=BF =
+=E0=A4=95=E0=A5=8B=E0=A4=88 =E0=A4=AB=E0=A4=B0=E0=A5=8D=E0=A4=95 =E0=A4=A8=
+=E0=A4=9C=E0=A4=BC=E0=A4=B0 =E0=A4=86=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=A5=88,=
+ =E0=A4=A4=E0=A5=8B =E0=A4=A4=E0=A4=A4=E0=A5=8D=E0=A4=95=E0=A4=BE=E0=A4=B2 =
+=E0=A4=85=E0=A4=AA=E0=A4=A8=E0=A5=87 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=
+=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=8B =E0=A4=B2=E0=A4=BF=E0=A4=96=E0=A4=BF=
+=E0=A4=A4 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=89=E0=A4=B8=E0=A4=95=E0=A5=80 =
+=E0=A4=B8=E0=A5=82=E0=A4=9A=E0=A4=A8=E0=A4=BE =E0=A4=A6=E0=A5=87=E0=A4=82=
+=E0=A5=A4</li>
+			<li>=E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=
+=A5=8B =E0=A4=AB=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=9F=E0=A5=8D=E0=
+=A4=B0=E0=A4=BE=E0=A4=82=E0=A4=B8=E0=A4=AB=E0=A4=B0 =E0=A4=95=E0=A4=B0=E0=
+=A4=A8=E0=A5=87 =E0=A4=B8=E0=A5=87 =E0=A4=AA=E0=A4=B9=E0=A4=B2=E0=A5=87 =E0=
+=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=
+=A4=AC=E0=A5=88=E0=A4=82=E0=A4=95 =E0=A4=85=E0=A4=95=E0=A4=BE=E0=A4=89=E0=
+=A4=82=E0=A4=9F =E0=A4=AC=E0=A5=8D=E0=A4=AF=E0=A5=8C=E0=A4=B0=E0=A5=87 =E0=
+=A4=95=E0=A4=BE =E0=A4=B8=E0=A4=A4=E0=A5=8D=E0=A4=AF=E0=A4=BE=E0=A4=AA=E0=
+=A4=A8 =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0/=E0=A4=8F=E0=
+=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=A4=9C =E0=A4=95=E0=
+=A5=80 =E0=A4=B5=E0=A5=87=E0=A4=AC=E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=9F =E0=
+=A4=B8=E0=A5=87 =E0=A4=95=E0=A4=B0 =E0=A4=B2=E0=A5=87=E0=A4=82=E0=A5=A4</li=
+>
+			<li>=E0=A4=8F=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=A4=82=E0=
+=A4=9C =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=B2=E0=A5=87=E0=A4=A8=E0=A4=A6=E0=
+=A5=87=E0=A4=A8 =E0=A4=95=E0=A5=87 =E0=A4=AC=E0=A4=BF=E0=A4=A8=E0=A4=BE, =
+=E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=A4=B0 =E0=A4=95=E0=A5=8B =
+=E0=A4=95=E0=A4=BF=E0=A4=B8=E0=A5=80 =E0=A4=AD=E0=A5=80 =E0=A4=B8=E0=A4=AE=
+=E0=A4=9D=E0=A5=8C=E0=A4=A4=E0=A5=87/ =E0=A4=AD=E0=A4=BE=E0=A4=B5=E0=A5=80 =
+=E0=A4=B0=E0=A4=BF=E0=A4=9F=E0=A4=B0=E0=A5=8D=E0=A4=A8 =E0=A4=95=E0=A5=87 =
+=E0=A4=B8=E0=A4=AE=E0=A4=9D=E0=A5=8C=E0=A4=A4=E0=A5=87 =E0=A4=AF=E0=A4=BE =
+=E0=A4=AB=E0=A4=82=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=95=E0=A5=87 =E0=A4=A6=
+=E0=A4=BE=E0=A4=B5=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=
+=E0=A4=8F =E0=A4=A6=E0=A4=BF=E0=A4=8F =E0=A4=97=E0=A4=8F =E0=A4=AB=E0=A4=82=
+=E0=A4=A1=E0=A5=8D=E0=A4=B8 =E0=A4=AF=E0=A4=BE =E0=A4=B8=E0=A4=BF=E0=A4=95=
+=E0=A5=8D=E0=A4=AF=E0=A5=8B=E0=A4=B0=E0=A5=80=E0=A4=9F=E0=A5=80=E0=A4=9C=E0=
+=A4=BC =E0=A4=95=E0=A5=87 =E0=A4=A6=E0=A4=BE=E0=A4=B5=E0=A5=8B=E0=A4=82 =E0=
+=A4=95=E0=A5=8B =E0=A4=8F=E0=A4=95=E0=A5=8D=E0=A4=B8=E0=A4=9A=E0=A5=87=E0=
+=A4=82=E0=A4=9C =E0=A4=A6=E0=A5=8D=E0=A4=B5=E0=A4=BE=E0=A4=B0=E0=A4=BE =E0=
+=A4=B8=E0=A5=8D=E0=A4=B5=E0=A5=80=E0=A4=95=E0=A4=BE=E0=A4=B0 =E0=A4=A8=E0=
+=A4=B9=E0=A5=80=E0=A4=82 =E0=A4=95=E0=A4=BF=E0=A4=AF=E0=A4=BE =E0=A4=9C=E0=
+=A4=BE=E0=A4=8F=E0=A4=97=E0=A4=BE =E0=A4=AF=E0=A4=A6=E0=A4=BF =E0=A4=86=E0=
+=A4=AA=E0=A4=95=E0=A4=BE =E0=A4=AC=E0=A5=8D=E0=A4=B0=E0=A5=8B=E0=A4=95=E0=
+=A4=B0 =E0=A4=95=E0=A5=8B=E0=A4=88 =E0=A4=A1=E0=A4=BF=E0=A4=AB=E0=A4=BE=E0=
+=A4=B2=E0=A5=8D=E0=A4=9F =E0=A4=95=E0=A4=B0=E0=A4=A4=E0=A4=BE =E0=A4=B9=E0=
+=A5=88=E0=A5=A4</li>
+			<li>=E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95 =E0=A4=9C=E0=
+=A4=BE=E0=A4=97=E0=A4=B0=E0=A5=82=E0=A4=95=E0=A4=A4=E0=A4=BE =E0=A4=95=E0=
+=A5=87 =E0=A4=B8=E0=A4=82=E0=A4=AC=E0=A4=82=E0=A4=A7 =E0=A4=AE=E0=A5=87=E0=
+=A4=82 =E0=A4=85=E0=A4=A7=E0=A4=BF=E0=A4=95 =E0=A4=AC=E0=A5=8D=E0=A4=AF=E0=
+=A5=8C=E0=A4=B0=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=
+=A4=95=E0=A5=83=E0=A4=AA=E0=A4=AF=E0=A4=BE =E0=A4=A8=E0=A4=BF=E0=A4=AE=E0=
+=A5=8D=E0=A4=A8=E0=A4=B2=E0=A4=BF=E0=A4=96=E0=A4=BF=E0=A4=A4 =E0=A4=95=E0=
+=A5=8B =E0=A4=A6=E0=A5=87=E0=A4=96=E0=A5=87=E0=A4=82-<a href=3D"https://nse=
+il.jioswift.com/interface/ctr/823e7192-3e81-4cd3-aae9-9c87a27a9a5a-17426042=
+13234"><span lang=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;mso-=
+ansi-language:EN-US">www.nseindia.com/invest/investors-home</span></a></li>
+			<li>=E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF=E0=A4=AD=E0=A5=82=E0=
+=A4=A4=E0=A4=BF =E0=A4=AC=E0=A4=BE=E0=A4=9C=E0=A4=BE=E0=A4=B0 =E0=A4=AE=E0=
+=A5=87=E0=A4=82 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6 =E0=A4=B8=E0=
+=A5=87 =E0=A4=B8=E0=A4=82=E0=A4=AC=E0=A4=82=E0=A4=A7=E0=A4=BF=E0=A4=A4 =E0=
+=A4=85=E0=A4=A7=E0=A4=BF=E0=A4=95 =E0=A4=9C=E0=A4=BE=E0=A4=A8=E0=A4=95=E0=
+=A4=BE=E0=A4=B0=E0=A5=80 =E0=A4=95=E0=A5=87 =E0=A4=B2=E0=A4=BF=E0=A4=8F =E0=
+=A4=95=E0=A5=83=E0=A4=AA=E0=A4=AF=E0=A4=BE =E0=A4=B8=E0=A5=87=E0=A4=AC=E0=
+=A5=80 =E0=A4=A8=E0=A4=BF=E0=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95 =E0=A4=B5=E0=
+=A5=87=E0=A4=AC=E0=A4=B8=E0=A4=BE=E0=A4=87=E0=A4=9F <a href=3D"https://nsei=
+l.jioswift.com/interface/ctr/43bc5fc1-bbc8-4e34-b44c-bb22f09a8eb9-174260421=
+3234"><span style=3D"font-size: 12.0pt; line-height: 107%; mso-ansi-languag=
+e: EN-US;">https://investor.sebi.gov.in/</span></a> =E0=A4=94=E0=A4=B0 =E0=
+=A4=B8=E0=A5=87=E0=A4=AC=E0=A5=80 =E0=A4=B8=E0=A4=BE=E2=82=B9=E0=A4=A5=E0=
+=A5=80 / Saa=E2=82=B9thi =E0=A4=AE=E0=A5=8B=E0=A4=AC=E0=A4=BE=E0=A4=87=E0=
+=A4=B2 =E0=A4=90=E0=A4=AA =E0=A4=AA=E0=A4=B0 =E0=A4=9C=E0=A4=BE=E0=A4=8F=E0=
+=A4=82=E0=A5=A4 </li>
+			<li>=E0=A4=B8=E0=A5=87=E0=A4=AC=E0=A5=80 =E0=A4=A8=E0=A5=87 =E0=A4=AA=E0=
+=A5=8D=E0=A4=B0=E0=A4=A4=E0=A4=BF=E0=A4=AD=E0=A5=82=E0=A4=A4=E0=A4=BF =E0=
+=A4=AC=E0=A4=BE=E0=A4=9C=E0=A4=BE=E0=A4=B0 =E0=A4=95=E0=A5=87 =E0=A4=AC=E0=
+=A4=BE=E0=A4=B0=E0=A5=87 =E0=A4=AE=E0=A5=87=E0=A4=82 =E0=A4=A8=E0=A4=BF=E0=
+=A4=B5=E0=A5=87=E0=A4=B6=E0=A4=95=E0=A5=8B=E0=A4=82 =E0=A4=95=E0=A5=87 =E0=
+=A4=9C=E0=A5=8D=E0=A4=9E=E0=A4=BE=E0=A4=A8 =E0=A4=95=E0=A5=8B =E0=A4=AC=E0=
+=A4=A2=E0=A4=BC=E0=A4=BE=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=A4=89=E0=
+=A4=A6=E0=A5=8D=E0=A4=A6=E0=A5=87=E0=A4=B6=E0=A5=8D=E0=A4=AF =E0=A4=B8=E0=
+=A5=87 =E0=A4=8F=E0=A4=95 =E0=A4=A8=E0=A4=BF=E0=A4=83=E0=A4=B6=E0=A5=81=E0=
+=A4=B2=E0=A5=8D=E0=A4=95, =E0=A4=B8=E0=A5=8D=E0=A4=B5=E0=A5=88=E0=A4=9A=E0=
+=A5=8D=E0=A4=9B=E0=A4=BF=E0=A4=95 =E0=A4=91=E0=A4=A8=E0=A4=B2=E0=A4=BE=E0=
+=A4=87=E0=A4=A8 &#34;Investor Certification Examination&#34; =E0=A4=B6=E0=
+=A5=81=E0=A4=B0=E0=A5=82 =E0=A4=95=E0=A5=80 =E0=A4=B9=E0=A5=88=E0=A5=A4 =E0=
+=A4=AA=E0=A4=82=E0=A4=9C=E0=A5=80=E0=A4=95=E0=A4=B0=E0=A4=A3 =E0=A4=95=E0=
+=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=94=E0=A4=B0 =E0=A4=85=E0=A4=AA=E0=A4=A8=E0=
+=A4=BE =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=AE=E0=A4=BE=E0=A4=A3=E0=A4=AA=E0=
+=A4=A4=E0=A5=8D=E0=A4=B0 =E0=A4=AA=E0=A5=8D=E0=A4=B0=E0=A4=BE=E0=A4=AA=E0=
+=A5=8D=E0=A4=A4 =E0=A4=95=E0=A4=B0=E0=A4=A8=E0=A5=87 =E0=A4=95=E0=A5=87 =E0=
+=A4=B2=E0=A4=BF=E0=A4=8F <a href=3D"https://nseil.jioswift.com/interface/ct=
+r/ee3d13c1-8bfa-4934-9839-ae800bea8872-1742604213234"><span lang=3D"EN-US" =
+style=3D"font-size:12.0pt;line-height:107%;mso-ansi-language:EN-US">https:/=
+/sice.nism.ac.in/</span></a> =E0=A4=AA=E0=A4=B0 =E0=A4=95=E0=A5=8D=E0=A4=B2=
+=E0=A4=BF=E0=A4=95 =E0=A4=95=E0=A4=B0=E0=A5=87=E0=A4=82=E0=A5=A4</li>
+		</ol>
+=20
+	</div>
+=20
+<p>We are glad to inform you that NSE for your convenience/comfort is provi=
+ding links below on investment concepts, investor alerts, your rights and o=
+bligation as an investor.</p>
+
+<div><a href=3D"https://nseil.jioswift.com/interface/ctr/040ad867-eddb-4ccf=
+-ab79-4ce9ca353e45-1742604213234"><span lang=3D"EN-US" style=3D"font-size:1=
+2.0pt;line-height:107%;mso-ansi-language:EN-US">www.nseindia.com/invest/fir=
+st-time-investor-know-your-rights</span></a></div>
+<div><a href=3D"https://nseil.jioswift.com/interface/ctr/25f655e2-6fad-44f4=
+-ae24-5f1b148cabcc-1742604213234"><span lang=3D"EN-US" style=3D"font-size:1=
+2.0pt;line-height:107%;mso-ansi-language:EN-US">www.nseindia.com/invest/fir=
+st-time-investor-fraud-dos-and-donts</span></a></div>
+<div><a href=3D"https://nseil.jioswift.com/interface/ctr/ddd53d3c-7f14-4159=
+-be37-b74a51b3163e-1742604213234"><span lang=3D"EN-US" style=3D"font-size:1=
+2.0pt;line-height:107%;mso-ansi-language:EN-US">www.nseindia.com/invest/fil=
+e-a-complaint-online</span></a></div>
+
+<p>You may also visit our website <a href=3D"https://nseil.jioswift.com/int=
+erface/ctr/a81dc3d2-a245-470f-91f9-2244f07252af-1742604213234"><span lang=
+=3D"EN-US" style=3D"font-size:12.0pt;line-height:107%;mso-ansi-language:EN-=
+US">www.nseindia.com</span></a> for any further information that you may re=
+quire or e-mail your queries to the e-mail ID <b>ignse@nse.co.in</b>, quoti=
+ng name of your city in the subject. We would be glad to assist you. </p>
+<br/> =20
+
+<div>  <b>  Information to investors:   </b> </div>
+
+<p>Exchange has introduced trading in Rights Entitlement w.e.f. May 20, 202=
+0. The trades executed, if any, for Rights Entitlement in Capital Market sh=
+all form part of the attached file. Rights Entitlement should not be mistak=
+en for ordinary shares and unless Rights Entitlement are exercised they wil=
+l lose value and no rights (shares) will be available to the investor. The =
+buyer of the Rights Entitlement is required to subscribe for the same befor=
+e the Issue Closing Date, else the same will lapse and no shares will be al=
+lotted.</p>
+<p>In case you need any clarification, please feel free to call on our toll=
+ free number 1800 266 0050 (select option 5 - UCI &amp; Trade Alerts). You =
+can also email us at <b>uci@nse.co.in</b>, quoting your PAN, Mobile no. and=
+ your query.</p>
+<br/>
+
+Thanks and Regards,  =20
+<br/>   =20
+<div>National Stock Exchange of India Limited<br/></div><div style=3D'displ=
+ay: none;'><img src=3D'https://nseil.jioswift.com/interface/openTracking?bu=
+cketId=3D2025-03-22-986&messageId=3D%3Cnseil%2F0195bb4e-26b2-7714-bd66-2eaa=
+d4bc0f3c%2Ftransactional%2Fswift%2Fnse-direct%40uci.nse.co.in%3E&sentAt=3D1=
+742604213234'/></div></html>
+--1d87dddc4d0bf47c01a72eb74130a1eaf4b45958fdce6838c54718d0f6cc--
+
+--f4a03d3bb4db047a5825f81f7bc9f370fa0b91148112631a4c6ddcf34f94
+Content-Disposition: attachment; filename="trade_details_BDEXXXXX1K_4976985884.pdf"
+Content-Transfer-Encoding: base64
+Content-Type: application/pdf; name="trade_details_BDEXXXXX1K_4976985884.pdf"
+
+JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDY4Mz4+
+c3RyZWFtCguWL7EC68KW/kNcxeXNe0a1C0VsMggV2u5PWc1n8ALgg9Jk5uOOmj2et0iC7n2AO6Ie
+aj0izNm7rrYSjqcC3SDQX8vV8RUtnxMuAhDsJvDVmt4xooqgM4rsv8kG2KIw1RmulkyQI59OY9Uw
+ffc/NtRkB2vpIuYF49iKeryRaLL/rgGWoISBMzC2vvp5pit6i2EpZ3JqKU1eLhlI4ClFVqBqxdaG
+wYyI8PxjYrQPa3KPkqippi+SpZDKXBTNk+btQb82qHa7ItMhJ9YyB70PJNNs+17pM3b+tMe409Z2
+an/mSr2A5EPY2Z4JStGagBPiLnq9B11CrFoqOZQk8AvUbbW5ctH05KkTDziYzRDa5Iy3hhzUm4fw
+NXnAVpVpN+MlwlxB7/M+PwrbaLiPDQM/wahyOUr57p5aKEhnAVWgoSwaZQ1TOufwZX9mRjVPiJXN
+qb6ITAtXzujLWCcV7JTv3i7LTR3s8xQ8NvQxONzVzvE0PMsrWXqgddNcUdMWNESVY7TzmmVH7L5m
+TTq1y0jvO7DwOS00gK5BNpdF/eFqxukPWvfrk9auN4UzCeWqLa04vl7Cd3r1ADUKa60BObmXvlmO
+AtiMfKBu6Bx//auvyUfFWAXWuogoijpIw2sdmPYeaahEPrNmKiceJVZTF7z8f2zH7v5hcNTsEad7
+JWtHUS7npujou6ulxUkzAjmr5i37eyX1Zs75iNvbuhE7B9dbvFN/fah2K8qLE5XjvCQXyAs1IFOZ
+V2sLA2pO2ACZuGd+p8jdy7LklFvSUvhUSNEoiDzXiZ/vuGXT0P4d/JxMfx6nLw40UCbW3WQhMM4b
+aBpxoBa15ZZE9OVRlDjFyzdyVIHXFR74TLYbKU5gPsK7DlkHHOkbZWg7PBFhYuVKxTqGcFzN1G13
+pAyDbeQ8CmVuZHN0cmVhbQplbmRvYmoKNSAwIG9iago8PC9Db250ZW50cyAzIDAgUi9UeXBlL1Bh
+Z2UvUmVzb3VyY2VzPDwvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdl
+SV0vRm9udDw8L0YxIDEgMCBSL0YyIDIgMCBSPj4+Pi9QYXJlbnQgNCAwIFIvUm90YXRlIDkwL01l
+ZGlhQm94WzAgMCA4NDIgMTE5MV0+PgplbmRvYmoKMSAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5
+cGUvRm9udC9CYXNlRm9udC9IZWx2ZXRpY2EtQm9sZC9FbmNvZGluZy9XaW5BbnNpRW5jb2Rpbmc+
+PgplbmRvYmoKMiAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5cGUvRm9udC9CYXNlRm9udC9IZWx2
+ZXRpY2EvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5nPj4KZW5kb2JqCjQgMCBvYmoKPDwvS2lkc1s1
+IDAgUl0vVHlwZS9QYWdlcy9Db3VudCAxPj4KZW5kb2JqCjYgMCBvYmoKPDwvVHlwZS9DYXRhbG9n
+L1BhZ2VzIDQgMCBSPj4KZW5kb2JqCjcgMCBvYmoKPDwvTW9kRGF0ZShMRcSczzm+j6wxpZRcXBGP
+HbJ5w6iSwe8pL0NyZWF0aW9uRGF0ZShMRcSczzm+j6wxpZRcXBGPHbJ5w6iSwe8pL1Byb2R1Y2Vy
+KGErk9SJLLySry6ihkRDxlxi9SaB7saYrX/V6F+xKS9BdXRob3IoRh6CxZJi79C+U+PJD0qfbeEq
+nu7Plq0pL1RpdGxlKFxcXHKXyJgsytnqYf7KHyk+PgplbmRvYmoKOCAwIG9iago8PC9PICgaD66n
+akLDBIu0m1ctBiuiuu7CXCj03k0XgzKFXHTeTQCOKS9QIC0xODUyL1IgMy9GaWx0ZXIvU3RhbmRh
+cmQvVSAofaqpXGKAmqx1+HLjspSwH7AAAAAAAAAAAAAAAAAAAAAAKS9WIDIvTGVuZ3RoIDEyOD4+
+CmVuZG9iagp4cmVmCjAgOQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDA5NDIgMDAwMDAgbiAK
+MDAwMDAwMTAzNSAwMDAwMCBuIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDExMjMgMDAwMDAg
+biAKMDAwMDAwMDc2NSAwMDAwMCBuIAowMDAwMDAxMTc0IDAwMDAwIG4gCjAwMDAwMDEyMTkgMDAw
+MDAgbiAKMDAwMDAwMTQwNyAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gNyAwIFIvRW5jcnlwdCA4
+IDAgUi9JRCBbPDc4NzQzZDVkNmRlNTgwZGMzOTEzNjliOTFhMzI5Yzk3PjxjNzExODE4NTE4YWUw
+MzNiMTczYWFiNmUzNzI1ZDRjZT5dL1Jvb3QgNiAwIFIvU2l6ZSA5Pj4Kc3RhcnR4cmVmCjE1NDcK
+JSVFT0YK
+--f4a03d3bb4db047a5825f81f7bc9f370fa0b91148112631a4c6ddcf34f94--
