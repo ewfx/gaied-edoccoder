@@ -90,11 +90,9 @@ def upload_eml():
     file_path = f"./uploads/{uploaded_file.filename}"
     uploaded_file.save(file_path)
     fileBodyContent = read_email_body(file_path)
-    # Process the file and input data
-    print(f"File saved at: {file_path}")
-    print(f"Input Data: {input_data}")
+    result = getDataFromGemini(fileBodyContent, input_data)
 
-    return jsonify({"message": "File and data received successfully!"})
+    return jsonify({"data": result})
 
 def read_email_body(file_path):
     try:
@@ -123,7 +121,7 @@ def getDataFromGemini(content, attributes):
     inputtext = "get " + attributes + "from" + "'" + content + "'"
     model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(inputtext)
-    return jsonify({"data": response.text})
+    return response.text
 
 # Run the app
 if __name__ == '__main__':
