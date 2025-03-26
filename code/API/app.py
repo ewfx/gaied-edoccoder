@@ -27,7 +27,7 @@ data = [
     {"id": 1, "name": "Item 1"},
     {"id": 2, "name": "Item 2"}
 ]
-inputtext = "get amout, codinate and sulata from 'hi sulata amount : 50. sulata :satish codinate 90'"
+inputtext = "get amout, codinate from 'hi amount : 50. codinate 90'"
 def to_markdown(text):
   text = text.replace('•', '  *')
   print(text)
@@ -44,8 +44,8 @@ def get_items():
     return jsonify(data)
 
 # Get a single item by ID
-@app.route('/items/<int:item_id>', methods=['GET'])
-def get_item(item_id):
+@app.route('/getAttributeFromEMLFilepath', methods=['GET'])
+def get_attribute_from_emlfilepath():
     # Get the current directory of the application
     current_dir = os.path.dirname(os.path.abspath(__file__))
     current_dir = current_dir + "\Asset\File"
@@ -61,7 +61,9 @@ def get_item(item_id):
             print(content)
     except FileNotFoundError:
         print(f"File '{file_name}' not found in the application folder.")
-
+    
+    attributes = "amount, codinate"
+    inputtext = "get " + attributes + "from" + "'" + content + "'"
     model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(inputtext)
     return jsonify({"data": response.text})
@@ -73,6 +75,55 @@ def add_item():
     new_item = request.json
     data.append(new_item)
     return jsonify(new_item), 201
+
+
+@app.route('/upload-eml', methods=['POST'])
+def upload_eml():
+    # Get the uploaded file
+    uploaded_file = request.files.get('file')
+    input_data = request.form.get('inputData')
+
+    if not uploaded_file or not input_data:
+        return jsonify({"error": "File or input data is missing"}), 400
+
+    # Save the file (optional)
+    file_path = f"./uploads/{uploaded_file.filename}"
+    uploaded_file.save(file_path)
+    fileBodyContent = read_email_body(file_path)
+    # Process the file and input data
+    print(f"File saved at: {file_path}")
+    print(f"Input Data: {input_data}")
+
+    return jsonify({"message": "File and data received successfully!"})
+
+def read_email_body(file_path):
+    try:
+        # Open the .eml file in binary mode
+        with open(file_path, 'rb') as eml_file:
+            # Parse the .eml file
+            msg = BytesParser(policy=policy.default).parse(eml_file)
+
+        # Extract the email body
+        if msg.is_multipart():
+            # If the email has multiple parts, get the plain text part
+            for part in msg.iter_parts():
+                if part.get_content_type() == "text/plain":
+                    return part.get_content()
+        else:
+            # If the email is not multipart, return the content directly
+            return msg.get_content()
+
+    except FileNotFoundError:
+        return f"File '{file_path}' not found."
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
+    
+
+def getDataFromGemini(content, attributes):
+    inputtext = "get " + attributes + "from" + "'" + content + "'"
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    response = model.generate_content(inputtext)
+    return jsonify({"data": response.text})
 
 # Run the app
 if __name__ == '__main__':
