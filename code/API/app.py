@@ -1,5 +1,7 @@
-from flask import Flask, jsonify, request
-import requests
+from email import policy
+from email.parser import BytesParser
+from flask import Flask, jsonify, request # type: ignore
+import requests # type: ignore
 import time
 import hmac
 import hashlib
@@ -8,9 +10,9 @@ import json
 import pathlib
 import textwrap
 import os
-import google.generativeai as genai
-from IPython.display import Markdown
-from IPython.display import display
+import google.generativeai as genai # type: ignore
+from IPython.display import Markdown # type: ignore
+from IPython.display import display # type: ignore
 
 app = Flask(__name__)
 
